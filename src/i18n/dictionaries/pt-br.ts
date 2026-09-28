@@ -2,12 +2,13 @@ import type { Dictionary } from "./en";
 
 export const ptBr: Dictionary = {
   meta: {
-    title: "Klaq — Seu diário audiovisual",
+    title: "Klaq | Seu diário audiovisual",
     description:
-      "Registre todos os filmes e séries que você assiste. Progresso, notas, listas e histórico — em um app bonito para iPhone e Android.",
+      "Registre todos os filmes e séries que você assiste, com progresso, notas, listas e histórico, tudo em um app bonito para iOS e Android.",
   },
   nav: {
     features: "Recursos",
+    roadmap: "Novidades",
     download: "Baixar",
     contribute: "Apoiar",
     home: "Início",
@@ -23,7 +24,7 @@ export const ptBr: Dictionary = {
     titleLead: "Tudo o que você assiste.",
     titleAccent: "Em um só lugar.",
     subtitle:
-      "O Klaq guarda cada filme e série que você assiste — seu progresso, suas notas, seu histórico — em um app tão gostoso de usar quanto as histórias que você ama.",
+      "O Klaq guarda cada filme e série que você assiste, do seu progresso às suas notas e seu histórico, em um app tão gostoso de usar quanto as histórias que você ama.",
     scroll: "Descubra",
   },
   stores: {
@@ -34,26 +35,18 @@ export const ptBr: Dictionary = {
     soon: "Em breve",
   },
   mockup: {
-    greeting: "Boa noite",
-    continueWatching: "Continuar assistindo",
-    episode: "T2 · E5",
-    remaining: "Faltam 18 min",
-    upNext: "Próximos episódios",
-    myList: "Minha lista",
-    tonight: "Hoje",
-    tomorrow: "Amanhã",
     rated: "Sua nota",
+    watched: "Assistido",
     season: "T",
-    watched: "T2 · E4 assistido",
   },
   features: {
     eyebrow: "Recursos",
     title: "Feito para quem ama o que assiste.",
-    subtitle: "Tudo o que você precisa para lembrar da sua vida nas telas — e nada além disso.",
+    subtitle: "Tudo o que você precisa para lembrar da sua vida nas telas, e nada além disso.",
     items: {
       progress: {
         title: "Nunca perca onde parou",
-        text: "Séries acompanhadas episódio a episódio. O Klaq sabe qual é o próximo — e quando ele estreia.",
+        text: "Séries acompanhadas episódio a episódio. O Klaq sabe qual é o próximo, e quando ele estreia.",
       },
       ratings: {
         title: "Dê sua nota",
@@ -65,7 +58,7 @@ export const ptBr: Dictionary = {
       },
       history: {
         title: "Seu histórico, intacto",
-        text: "Cada filme, cada episódio, cada reassistida — uma linha do tempo de tudo o que você viu.",
+        text: "Cada filme, cada episódio e cada reassistida, numa linha do tempo de tudo o que você viu.",
       },
       stats: {
         title: "Seus números",
@@ -86,6 +79,7 @@ export const ptBr: Dictionary = {
     },
     statsLabel: "horas neste mês",
     synced: "Sincronizado",
+    shareRating: "Compartilhar nas redes",
     days: ["S", "T", "Q", "Q", "S", "S", "D"],
     historyItems: ["Filme", "Episódio", "Reassistido"],
     accents: {
@@ -97,10 +91,80 @@ export const ptBr: Dictionary = {
     },
   },
   marquee: ["Filmes", "Séries", "Novelas", "Programas", "Animes", "Documentários"],
+  tour: {
+    eyebrow: "Dá uma olhada",
+    title: "Este é o Klaq. De verdade.",
+    subtitle: "Sem mockup, é o app de verdade.",
+    screens: [
+      {
+        title: "Início",
+        text: "Seus próximos episódios, na ordem certa, e as séries que você já está assistindo.",
+        image: "/screens/home.jpg",
+      },
+      {
+        title: "Gaveta",
+        text: "Todo o seu histórico, organizado por categoria.",
+        image: "/screens/library.jpg",
+      },
+      {
+        title: "Timeline",
+        text: "Do que você já viu ao que ainda vem por aí.",
+        image: "/screens/timeline.jpg",
+      },
+      {
+        title: "Detalhes da série",
+        text: "Nota, sinopse e seu progresso de episódios, tudo num só lugar.",
+        image: "/screens/show.jpg",
+      },
+      {
+        title: "Detalhes do episódio",
+        text: "Marque o que já assistiu e vá direto para o próximo.",
+        image: "/screens/episode.jpg",
+      },
+      {
+        title: "Perfil",
+        text: "Suas estatísticas, suas pessoas e de onde tudo sincroniza.",
+        image: "/screens/profile.jpg",
+      },
+    ],
+  },
+  roadmap: {
+    eyebrow: "O que vem por aí",
+    title: "O Klaq está só começando.",
+    subtitle: "Veja o que estamos construindo a seguir.",
+    badge: "Em breve",
+    items: [
+      {
+        title: "Livros e jogos também",
+        text: "Registre tudo o que você curte, não só filmes e séries.",
+      },
+      {
+        title: "Do seu jeito",
+        text: "Personalize seu perfil e escolha o tema do app que combina com você.",
+      },
+      {
+        title: "Listas personalizadas",
+        text: "Crie suas próprias listas para qualquer ocasião, humor ou maratona.",
+      },
+      {
+        title: "Listas compartilhadas",
+        text: "Combine o que assistir com amigos e família.",
+      },
+      {
+        title: "Notificações inteligentes",
+        text: "Lembretes personalizados de novos episódios e lançamentos.",
+      },
+    ],
+  },
   download: {
     eyebrow: "Baixar",
     title: "Seu próximo episódio está esperando.",
-    subtitle: "Disponível para iPhone e Android.",
+    subtitle: "Disponível para iOS e Android.",
+  },
+  beta: {
+    title: "Ainda não saiu?",
+    subtitle: "Peça acesso ao beta e seja um dos primeiros a experimentar o Klaq.",
+    cta: "Pedir acesso ao beta",
   },
   contribute: {
     eyebrow: "Apoie",

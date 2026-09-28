@@ -162,6 +162,64 @@ export const ServerIcon = (p: P) => (
   </svg>
 );
 
+export const ShareIcon = (p: P) => (
+  <svg viewBox="0 0 24 24" {...stroke} {...p}>
+    <circle cx="18" cy="5" r="2.8" />
+    <circle cx="6" cy="12" r="2.8" />
+    <circle cx="18" cy="19" r="2.8" />
+    <path d="m8.5 10.6 7-4.2M8.5 13.4l7 4.2" />
+  </svg>
+);
+
+export const BookIcon = (p: P) => (
+  <svg viewBox="0 0 24 24" {...stroke} {...p}>
+    <path d="M4 5.5C4 4.4 4.9 4 6 4h6v16H6c-1.1 0-2-.4-2-1.5z" />
+    <path d="M20 5.5c0-1.1-.9-1.5-2-1.5h-6v16h6c1.1 0 2-.4 2-1.5z" />
+  </svg>
+);
+
+export const GameIcon = (p: P) => (
+  <svg viewBox="0 0 24 24" {...stroke} {...p}>
+    <path d="M6.5 8h11a4 4 0 0 1 3.9 4.9l-.7 3a2.6 2.6 0 0 1-4.6 1L14 15h-4l-2.1 1.9a2.6 2.6 0 0 1-4.6-1l-.7-3A4 4 0 0 1 6.5 8z" />
+    <path d="M7.5 10.8v3M6 12.3h3" />
+    <path d="M16.3 11h.01M18.3 13h.01" />
+  </svg>
+);
+
+export const ListIcon = (p: P) => (
+  <svg viewBox="0 0 24 24" {...stroke} {...p}>
+    <path d="M9 6h11M9 12h11M9 18h11" />
+    <path d="M4.5 6h.01M4.5 12h.01M4.5 18h.01" />
+  </svg>
+);
+
+export const BellIcon = (p: P) => (
+  <svg viewBox="0 0 24 24" {...stroke} {...p}>
+    <path d="M6 10a6 6 0 1 1 12 0c0 4 1.5 5.5 1.5 5.5h-15S6 14 6 10z" />
+    <path d="M10 19a2 2 0 0 0 4 0" />
+  </svg>
+);
+
+export const InstagramIcon = (p: P) => (
+  <svg viewBox="0 0 24 24" {...stroke} {...p}>
+    <rect x="3.5" y="3.5" width="17" height="17" rx="5" />
+    <circle cx="12" cy="12" r="4" />
+    <path d="M17 7h.01" />
+  </svg>
+);
+
+export const XIcon = (p: P) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden {...p}>
+    <path d="M4 3h3.8l4.3 5.8L17 3h3l-6.3 8.1L21 21h-3.8l-4.6-6.2L7 21H4l6.7-8.6z" />
+  </svg>
+);
+
+export const TikTokIcon = (p: P) => (
+  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden {...p}>
+    <path d="M14 3h2.7c.3 1.9 1.6 3.3 3.6 3.6v2.8c-1.4 0-2.6-.4-3.6-1.1v6.4a5.4 5.4 0 1 1-5.4-5.4c.3 0 .6 0 .9.1v2.9a2.5 2.5 0 1 0 1.8 2.4z" />
+  </svg>
+);
+
 export const SparkIcon = (p: P) => (
   <svg viewBox="0 0 24 24" {...stroke} {...p}>
     <path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18" />

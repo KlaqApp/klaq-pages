@@ -1,5 +1,6 @@
 import { htmlLang, localePath, otherLocale, type Locale, type Route } from "@/i18n/config";
 import { getDictionary } from "@/i18n";
+import { HeartIcon } from "./icons";
 import { HeaderScroll } from "./client/HeaderScroll";
 import { LanguageSwitch } from "./client/LanguageSwitch";
 
@@ -16,12 +17,13 @@ export function SiteHeader({ locale, route }: { locale: Locale; route: Route }) 
       <HeaderScroll>
         <div className="container">
           <div className="site-header__bar">
-            <a className="brand" href={home} aria-label={`Klaq — ${t.nav.home}`}>
+            <a className="brand" href={home} aria-label={`Klaq: ${t.nav.home}`}>
               <img src="/icon.png" alt="" width={32} height={32} />
               Klaq
             </a>
             <nav className="site-nav" aria-label="Primary">
               <a href={`${home}#features`}>{t.nav.features}</a>
+              <a href={`${home}#roadmap`}>{t.nav.roadmap}</a>
               <a href={`${home}#download`}>{t.nav.download}</a>
               <a href={`${home}#contribute`}>{t.nav.contribute}</a>
             </nav>
@@ -33,6 +35,10 @@ export function SiteHeader({ locale, route }: { locale: Locale; route: Route }) 
                 label={t.language.switchTo}
                 short={t.language.short}
               />
+              <a className="btn btn--glass btn--sm btn--icon-label" href={`${home}#contribute`}>
+                <HeartIcon />
+                <span>{t.nav.contribute}</span>
+              </a>
               <a className="btn btn--accent btn--sm" href={`${home}#download`}>
                 {t.nav.download}
               </a>

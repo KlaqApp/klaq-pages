@@ -1,11 +1,12 @@
 export const en = {
   meta: {
-    title: "Klaq — Your personal watch diary",
+    title: "Klaq | Your personal watch diary",
     description:
-      "Track every movie and series you watch. Progress, ratings, lists and history — beautifully kept in one app for iPhone and Android.",
+      "Track every movie and series you watch, with progress, ratings, lists and history all beautifully kept in one app for iOS and Android.",
   },
   nav: {
     features: "Features",
+    roadmap: "What's coming",
     download: "Download",
     contribute: "Support",
     home: "Home",
@@ -21,7 +22,7 @@ export const en = {
     titleLead: "Everything you watch.",
     titleAccent: "Beautifully kept.",
     subtitle:
-      "Klaq keeps track of every movie and series you watch — your progress, your ratings, your history — in an app that feels as good as the stories you love.",
+      "Klaq keeps track of every movie and series you watch, from your progress and ratings to your full history, in an app that feels as good as the stories you love.",
     scroll: "Discover",
   },
   stores: {
@@ -32,26 +33,18 @@ export const en = {
     soon: "Coming soon",
   },
   mockup: {
-    greeting: "Good evening",
-    continueWatching: "Continue watching",
-    episode: "S2 · E5",
-    remaining: "18 min left",
-    upNext: "Up next",
-    myList: "My list",
-    tonight: "Tonight",
-    tomorrow: "Tomorrow",
     rated: "You rated",
+    watched: "Watched",
     season: "S",
-    watched: "S2 · E4 watched",
   },
   features: {
     eyebrow: "Features",
     title: "Made for people who love what they watch.",
-    subtitle: "Everything you need to remember your screen life — and nothing you don't.",
+    subtitle: "Everything you need to remember your screen life, and nothing you don't.",
     items: {
       progress: {
         title: "Never lose your place",
-        text: "Series tracked episode by episode. Klaq knows what's next — and when it airs.",
+        text: "Series tracked episode by episode. Klaq knows what's next, and when it airs.",
       },
       ratings: {
         title: "Rate what you watch",
@@ -63,7 +56,7 @@ export const en = {
       },
       history: {
         title: "Your history, intact",
-        text: "Every movie, every episode, every rewatch — a timeline of everything you've seen.",
+        text: "Every movie, episode and rewatch, all in a timeline of everything you've seen.",
       },
       stats: {
         title: "Your numbers",
@@ -84,6 +77,7 @@ export const en = {
     },
     statsLabel: "hours this month",
     synced: "Synced",
+    shareRating: "Share to socials",
     days: ["M", "T", "W", "T", "F", "S", "S"],
     historyItems: ["Movie", "Episode", "Rewatch"],
     accents: {
@@ -95,10 +89,80 @@ export const en = {
     },
   },
   marquee: ["Movies", "Series", "Soap operas", "Shows", "Anime", "Documentaries"],
+  tour: {
+    eyebrow: "Take a look",
+    title: "This is Klaq. For real.",
+    subtitle: "No mockups, just the actual app.",
+    screens: [
+      {
+        title: "Home",
+        text: "Your next episodes, in the right order, plus the series you're already watching.",
+        image: "/screens/home.jpg",
+      },
+      {
+        title: "Drawer",
+        text: "Your whole history, neatly organized by category.",
+        image: "/screens/library.jpg",
+      },
+      {
+        title: "Timeline",
+        text: "From what you've already seen to what's still coming.",
+        image: "/screens/timeline.jpg",
+      },
+      {
+        title: "Show details",
+        text: "Ratings, synopsis and your episode progress, all in one place.",
+        image: "/screens/show.jpg",
+      },
+      {
+        title: "Episode details",
+        text: "Mark what you've watched and jump straight to the next one.",
+        image: "/screens/episode.jpg",
+      },
+      {
+        title: "Profile",
+        text: "Your stats, your people, and where everything syncs from.",
+        image: "/screens/profile.jpg",
+      },
+    ],
+  },
+  roadmap: {
+    eyebrow: "What's coming",
+    title: "Klaq is just getting started.",
+    subtitle: "Here's what we're building next.",
+    badge: "Coming soon",
+    items: [
+      {
+        title: "Books and games too",
+        text: "Track everything you're into, not just movies and series.",
+      },
+      {
+        title: "Make it yours",
+        text: "Personalize your profile and pick the app theme that fits you.",
+      },
+      {
+        title: "Custom lists",
+        text: "Build your own lists for any occasion, mood or marathon.",
+      },
+      {
+        title: "Shared lists",
+        text: "Plan what to watch together with friends and family.",
+      },
+      {
+        title: "Smart notifications",
+        text: "Personalized reminders for new episodes and upcoming releases.",
+      },
+    ],
+  },
   download: {
     eyebrow: "Download",
     title: "Your next episode is waiting.",
-    subtitle: "Available for iPhone and Android.",
+    subtitle: "Available for iOS and Android.",
+  },
+  beta: {
+    title: "Not live yet?",
+    subtitle: "Request access to the beta and be among the first to try Klaq.",
+    cta: "Request beta access",
   },
   contribute: {
     eyebrow: "Support",

@@ -7,6 +7,7 @@ import {
   ClockIcon,
   PaletteIcon,
   PlayIcon,
+  ShareIcon,
   StarIcon,
   SyncIcon,
   UsersIcon,
@@ -65,18 +66,24 @@ function EpisodeGrid({ season }: { season: string }) {
   );
 }
 
-function Stars() {
+function Stars({ share }: { share: string }) {
   // 4.5 stars: the last one is clipped halfway.
   const clips = ["0%", "0%", "0%", "0%", "50%"];
   return (
-    <div className="big-stars" aria-hidden>
-      {clips.map((clip, i) => (
-        <span key={i} className="fill-wrap">
-          <StarIcon style={{ color: "color-mix(in srgb, var(--text) 14%, transparent)" }} />
-          <StarIcon className="fill" style={v({ "--i": i, "--clip": clip })} />
-        </span>
-      ))}
-    </div>
+    <>
+      <div className="big-stars" aria-hidden>
+        {clips.map((clip, i) => (
+          <span key={i}>
+            <StarIcon />
+            <StarIcon className="fill" style={v({ "--i": i, "--clip": clip })} />
+          </span>
+        ))}
+      </div>
+      <span className="sync" aria-hidden>
+        <ShareIcon />
+        {share}
+      </span>
+    </>
   );
 }
 
@@ -104,7 +111,7 @@ export function Features({ t, season }: { t: Dictionary["features"]; season: str
             <EpisodeGrid season={season} />
           </Tile>
           <Tile order={1} icon={<StarIcon />} title={f.ratings.title} text={f.ratings.text}>
-            <Stars />
+            <Stars share={t.shareRating} />
           </Tile>
           <Tile order={2} icon={<BookmarkIcon />} title={f.watchlist.title} text={f.watchlist.text}>
             <div className="stack" aria-hidden>

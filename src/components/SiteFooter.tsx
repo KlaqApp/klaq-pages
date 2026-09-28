@@ -1,6 +1,7 @@
 import { site } from "@/config/site";
 import { getDictionary } from "@/i18n";
 import { htmlLang, localePath, otherLocale, type Locale, type Route } from "@/i18n/config";
+import { InstagramIcon, TikTokIcon, XIcon } from "./icons";
 import { LanguageSwitch } from "./client/LanguageSwitch";
 
 export function SiteFooter({ locale, route }: { locale: Locale; route: Route }) {
@@ -23,6 +24,7 @@ export function SiteFooter({ locale, route }: { locale: Locale; route: Route }) 
             <h4>{t.footer.project}</h4>
             <ul>
               <li><a href={`${home}#features`}>{t.nav.features}</a></li>
+              <li><a href={`${home}#roadmap`}>{t.nav.roadmap}</a></li>
               <li><a href={`${home}#download`}>{t.nav.download}</a></li>
               <li><a href={`${home}#contribute`}>{t.nav.contribute}</a></li>
             </ul>
@@ -40,6 +42,17 @@ export function SiteFooter({ locale, route }: { locale: Locale; route: Route }) 
             <ul>
               <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
             </ul>
+            <div className="footer__social">
+              <a href={site.social.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                <InstagramIcon />
+              </a>
+              <a href={site.social.x} target="_blank" rel="noopener noreferrer" aria-label="X">
+                <XIcon />
+              </a>
+              <a href={site.social.tiktok} target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                <TikTokIcon />
+              </a>
+            </div>
           </div>
         </div>
         <div className="footer__bottom">

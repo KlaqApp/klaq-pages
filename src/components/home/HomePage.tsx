@@ -6,8 +6,10 @@ import { SiteFooter } from "../SiteFooter";
 import { SiteHeader } from "../SiteHeader";
 import { StoreBadges } from "../StoreBadges";
 import { HeartIcon, MailIcon, ServerIcon, SparkIcon, UsersIcon } from "../icons";
+import { AppTour } from "./AppTour";
 import { Features } from "./Features";
 import { PhoneMockup } from "./PhoneMockup";
+import { Roadmap } from "./Roadmap";
 
 const d = (n: number) => ({ "--d": n }) as CSSProperties;
 const supportIcons = [<ServerIcon key="server" />, <SparkIcon key="spark" />, <UsersIcon key="users" />];
@@ -52,6 +54,10 @@ export function HomePage({ locale }: { locale: Locale }) {
 
         <Features t={t.features} season={t.mockup.season} />
 
+        <AppTour t={t.tour} />
+
+        <Roadmap t={t.roadmap} />
+
         <section id="download" className="section">
           <div className="container">
             <div className="download glass" data-reveal>
@@ -60,6 +66,12 @@ export function HomePage({ locale }: { locale: Locale }) {
               <h2 className="section-title">{t.download.title}</h2>
               <p className="section-sub">{t.download.subtitle}</p>
               <StoreBadges t={t.stores} />
+              <div className="beta">
+                <p>{t.beta.subtitle}</p>
+                <a className="btn btn--glass" href={site.betaFormUrl} target="_blank" rel="noopener noreferrer">
+                  {t.beta.cta}
+                </a>
+              </div>
             </div>
           </div>
         </section>

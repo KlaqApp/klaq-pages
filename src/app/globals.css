@@ -276,6 +276,15 @@ button { font: inherit; color: inherit; }
 @media (min-width: 760px) {
   .site-nav { display: flex; }
   .site-header__actions { margin-left: 8px; }
+  /* .site-nav already has the Support link at this width. */
+  .site-header__actions .btn--icon-label { display: none; }
+}
+/* Support link lives in the actions bar (not just .site-nav) so it stays reachable on mobile too. */
+.btn--icon-label span {
+  display: none;
+}
+@media (min-width: 480px) {
+  .btn--icon-label span { display: inline; }
 }
 
 .lang-switch {
@@ -552,158 +561,14 @@ button { font: inherit; color: inherit; }
   overflow: hidden;
   background: linear-gradient(180deg, #151515, #000 55%);
   color: #fff;
-  font-size: calc(var(--w) * 0.043);
-  line-height: 1.3;
-  container-type: inline-size;
 }
-.phone__island {
-  position: absolute;
-  top: 3%;
-  left: 50%;
-  width: 32%;
-  height: 4.4%;
-  border-radius: 999px;
-  background: #000;
-  transform: translateX(-50%);
-  z-index: 3;
-}
-.phone__status {
-  display: flex;
-  justify-content: space-between;
-  padding: 4.5% 9% 0;
-  font-size: 0.85em;
-  font-weight: 600;
-}
-.phone__status-icons { display: flex; gap: 4px; align-items: center; }
-.phone__status-icons i {
+.phone__shot {
   display: block;
-  width: 1.3em;
-  height: 0.65em;
-  border-radius: 3px;
-  border: 1.5px solid rgba(255, 255, 255, 0.9);
-}
-.phone__body { padding: 9% 6% 0; }
-.phone__greet { font-size: 0.82em; color: rgba(255, 255, 255, 0.55); font-weight: 500; }
-.phone__h { font-size: 1.45em; font-weight: 700; letter-spacing: -0.03em; margin-top: 1%; }
-.phone__label {
-  margin: 7% 0 3.5%;
-  font-size: 0.95em;
-  font-weight: 650;
-  letter-spacing: -0.01em;
-}
-
-.m-feature {
-  position: relative;
-  aspect-ratio: 16 / 10;
-  margin-top: 5%;
-  border-radius: 18px;
-  overflow: hidden;
-  background:
-    radial-gradient(120% 90% at 85% 10%, #ffb36b 0%, transparent 45%),
-    radial-gradient(90% 90% at 10% 100%, #3d2c8d 0%, transparent 60%),
-    linear-gradient(160deg, #6b3fa0, #1b1035 70%);
-}
-.m-feature::before {
-  content: "";
-  position: absolute;
-  inset: 40% -10% -20%;
-  background: radial-gradient(60% 50% at 70% 60%, rgba(0, 0, 0, 0.55), transparent),
-    linear-gradient(transparent, rgba(0, 0, 0, 0.75));
-}
-.m-feature__sun {
-  position: absolute;
-  top: 16%;
-  right: 18%;
-  width: 18%;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: #ffd8a1;
-  box-shadow: 0 0 40px #ffb36b;
-  animation: sun 8s ease-in-out infinite alternate;
-}
-@keyframes sun { to { transform: translateY(12%); } }
-.m-feature__hills {
-  position: absolute;
-  inset: auto 0 0;
-  height: 48%;
-  background:
-    radial-gradient(80% 100% at 20% 100%, #120b26 60%, transparent 61%),
-    radial-gradient(90% 100% at 85% 100%, #1d1240 60%, transparent 61%);
-}
-.m-feature__info {
-  position: absolute;
-  inset: auto 0 0;
-  padding: 6% 7%;
-  z-index: 1;
-}
-.m-feature__title { font-weight: 700; font-size: 1.05em; letter-spacing: -0.02em; }
-.m-feature__meta {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 1.5%;
-  font-size: 0.72em;
-  color: rgba(255, 255, 255, 0.78);
-}
-.m-progress {
-  height: 4px;
-  margin-top: 4%;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.22);
-  overflow: hidden;
-}
-.m-progress > i {
-  display: block;
+  width: 100%;
   height: 100%;
-  width: 72%;
-  border-radius: inherit;
-  background: var(--accent);
-  box-shadow: 0 0 10px var(--accent);
-  transform-origin: left;
-  animation: grow 1.8s var(--ease) both 1.2s;
-}
-@keyframes grow { from { transform: scaleX(0); } }
-
-.m-row {
-  display: flex;
-  align-items: center;
-  gap: 4%;
-  padding: 3%;
-  margin-bottom: 3%;
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-.m-row__thumb {
-  width: 22%;
-  aspect-ratio: 16 / 10;
-  border-radius: 8px;
-  flex: none;
-}
-.m-row__title { font-size: 0.8em; font-weight: 600; }
-.m-row__meta { font-size: 0.68em; color: rgba(255, 255, 255, 0.55); }
-.m-row__pill {
-  margin-left: auto;
-  padding: 2% 4%;
-  border-radius: 999px;
-  font-size: 0.62em;
-  font-weight: 700;
-  color: var(--accent);
-  background: color-mix(in srgb, var(--accent) 16%, transparent);
+  object-fit: cover;
 }
 
-.m-rail {
-  display: flex;
-  gap: 3%;
-  width: max-content;
-  animation: rail 18s linear infinite;
-}
-.m-rail-mask {
-  margin-inline: -6%;
-  padding-inline: 6%;
-  overflow: hidden;
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
-}
 .m-poster {
   width: calc(var(--w) * 0.2);
   aspect-ratio: 2 / 3;
@@ -711,44 +576,8 @@ button { font: inherit; color: inherit; }
   flex: none;
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08) inset;
 }
-@keyframes rail { to { transform: translateX(-50%); } }
 
-.m-tabbar {
-  position: absolute;
-  left: 50%;
-  bottom: 3.5%;
-  display: flex;
-  gap: 2%;
-  width: 78%;
-  padding: 2%;
-  border-radius: 999px;
-  transform: translateX(-50%);
-  background: rgba(40, 40, 44, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.14);
-  -webkit-backdrop-filter: blur(16px);
-  backdrop-filter: blur(16px);
-}
-.m-tabbar span {
-  flex: 1;
-  display: grid;
-  place-items: center;
-  height: calc(var(--w) * 0.11);
-  border-radius: 999px;
-  color: rgba(255, 255, 255, 0.6);
-}
-.m-tabbar span svg { width: 42%; height: 42%; }
-.m-tabbar span[data-active] {
-  color: var(--accent);
-  background: rgba(255, 255, 255, 0.12);
-}
-.m-fade {
-  position: absolute;
-  inset: auto 0 0;
-  height: 22%;
-  background: linear-gradient(transparent, #000 70%);
-}
-
-/* Poster palettes (abstract art, no real titles). */
+/* Poster palettes (abstract art, no real titles: used by the watchlist tile's stack). */
 .art-1 { background: linear-gradient(160deg, #ff8a5c, #7a1f5c); }
 .art-2 { background: radial-gradient(circle at 30% 30%, #9be7ff, #1e4c8f 70%); }
 .art-3 { background: linear-gradient(200deg, #f7d774, #d1495b 60%, #3b1f44); }
@@ -906,16 +735,20 @@ button { font: inherit; color: inherit; }
   width: 30px;
   height: 30px;
   color: var(--glass-strong);
+  /* Filter lives on the unclipped wrapper, not on .fill itself, so Safari doesn't box the
+     drop-shadow into the clip-path's rectangle. */
+  filter: drop-shadow(0 0 8px color-mix(in srgb, var(--rating) 50%, transparent));
 }
 .big-stars svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.big-stars svg:first-child { color: color-mix(in srgb, var(--text) 22%, transparent); }
 .big-stars .fill {
   color: var(--rating);
   clip-path: inset(0 100% 0 0);
   transition: clip-path 0.5s var(--ease);
   transition-delay: calc(var(--i) * 140ms + 300ms);
-  filter: drop-shadow(0 0 8px color-mix(in srgb, var(--rating) 50%, transparent));
 }
 .is-visible .big-stars .fill { clip-path: inset(0 var(--clip, 0%) 0 0); }
+.big-stars + .sync { margin-top: 14px; }
 
 /* watchlist stack */
 .stack { position: relative; height: 110px; }
@@ -1159,8 +992,150 @@ button { font: inherit; color: inherit; }
 }
 .mini-card:hover { transform: translateX(6px); border-color: color-mix(in srgb, var(--accent) 40%, var(--glass-border)); }
 .mini-card .icon-chip { margin: 0; flex: none; }
-.mini-card h3 { font-size: 17px; font-weight: 650; letter-spacing: -0.01em; }
+.mini-card h3 { display: flex; align-items: center; gap: 10px; font-size: 17px; font-weight: 650; letter-spacing: -0.01em; }
 .mini-card p { font-size: 15px; color: var(--text-2); }
+
+/* ---------- Roadmap ---------- */
+
+.roadmap-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+@media (min-width: 640px) {
+  .roadmap-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (min-width: 1000px) {
+  .roadmap-grid { grid-template-columns: 1fr 1fr 1fr; }
+}
+.roadmap-badge {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--accent-strong);
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+  padding: 3px 9px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+/* ---------- Beta ---------- */
+
+.beta {
+  margin-top: 28px;
+  padding-top: 28px;
+  border-top: 1px solid var(--glass-border);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.beta p { font-size: 15px; color: var(--text-2); max-width: 42ch; }
+
+/* ---------- App tour ---------- */
+/* Base layout: works everywhere, no JS, no scroll-driven CSS. The frames are always absolutely
+   positioned (so a stack of 6 never inflates .phone's height via content) and only the first
+   one is shown; every caption is listed below it, in normal flow. Browsers with
+   `animation-timeline: view()` get the enhanced version further down: a tall pinned section
+   where the screens crossfade as you scroll past it. */
+.tour { padding-block: clamp(56px, 8vw, 96px); }
+.tour__head { text-align: center; margin-bottom: clamp(40px, 6vw, 64px); }
+.tour__stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+.tour__frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+}
+.tour__frame:first-child { opacity: 1; }
+.tour__side { width: 100%; max-width: 460px; }
+.tour__captions { display: grid; gap: 12px; }
+.tour__caption {
+  padding: 18px 22px;
+  border-radius: var(--radius);
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+}
+.tour__caption h3 { font-size: 17px; font-weight: 650; letter-spacing: -0.01em; }
+.tour__caption p { margin-top: 4px; font-size: 15px; color: var(--text-2); }
+.tour__dots { display: none; }
+
+@supports (animation-timeline: view()) {
+  @media (min-width: 760px) and (prefers-reduced-motion: no-preference) {
+    .tour {
+      height: calc(var(--n, 6) * 85vh);
+      padding-block: 0;
+      view-timeline-name: --tour;
+      view-timeline-axis: block;
+    }
+    .tour__sticky {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 24px;
+      overflow: hidden;
+    }
+    .tour__head { margin-bottom: 0; }
+    .tour__stage {
+      flex-direction: row;
+      justify-content: center;
+      gap: clamp(40px, 8vw, 120px);
+    }
+    .tour__frame {
+      animation: tour-frame linear both;
+      animation-timeline: --tour;
+    }
+    .tour__side { display: flex; flex-direction: column; justify-content: center; max-width: 380px; }
+    .tour__captions { position: relative; height: 130px; }
+    .tour__caption {
+      position: absolute;
+      inset: 0;
+      align-self: center;
+      background: none;
+      border: none;
+      padding: 0;
+      opacity: 0;
+      transform: translateY(16px);
+      animation: tour-caption linear both;
+      animation-timeline: --tour;
+    }
+    .tour__caption h3 { font-size: 22px; }
+    .tour__caption p { margin-top: 8px; font-size: 16px; }
+    .tour__dots { display: flex; gap: 8px; }
+    .tour__dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--glass-strong);
+      opacity: 0.5;
+      animation: tour-dot linear both;
+      animation-timeline: --tour;
+    }
+  }
+}
+@keyframes tour-frame {
+  0%, 100% { opacity: 0; }
+  12%, 88% { opacity: 1; }
+}
+@keyframes tour-caption {
+  0%, 100% { opacity: 0; transform: translateY(16px); }
+  15%, 85% { opacity: 1; transform: translateY(0); }
+}
+@keyframes tour-dot {
+  0%, 100% { opacity: 0.5; transform: scale(1); background: var(--glass-strong); }
+  15%, 85% { opacity: 1; transform: scale(1.3); background: var(--accent); }
+}
 
 /* ---------- Footer ---------- */
 
@@ -1194,6 +1169,19 @@ button { font: inherit; color: inherit; }
 .footer__col ul { list-style: none; padding: 0; display: grid; gap: 10px; }
 .footer__col a { color: var(--text-2); transition: color 0.2s; }
 .footer__col a:hover { color: var(--text); }
+.footer__social { display: flex; gap: 10px; margin-top: 16px; }
+.footer__social a {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 999px;
+  border: 1px solid var(--glass-border);
+  color: var(--text-2);
+  transition: color 0.2s, border-color 0.2s;
+}
+.footer__social a:hover { color: var(--text); border-color: color-mix(in srgb, var(--accent) 40%, var(--glass-border)); }
+.footer__social svg { width: 17px; height: 17px; }
 .footer__bottom {
   display: flex;
   flex-wrap: wrap;
