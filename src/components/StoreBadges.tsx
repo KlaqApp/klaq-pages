@@ -35,7 +35,7 @@ function Badge({ href, icon, top, name, soon }: { href: string; icon: ReactNode;
     return (
       <span className="store" aria-disabled="true" aria-label={`${name}: ${soon}`}>
         {content}
-        <span className="store__soon" aria-hidden>
+        <span className="store__soon k-badge" aria-hidden>
           {soon}
         </span>
       </span>

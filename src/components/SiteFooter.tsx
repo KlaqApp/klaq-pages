@@ -21,7 +21,7 @@ export function SiteFooter({ locale, route }: { locale: Locale; route: Route }) 
             <p>{t.footer.tagline}</p>
           </div>
           <div className="footer__col">
-            <h4>{t.footer.project}</h4>
+            <h4 className="k-eyebrow">{t.footer.project}</h4>
             <ul>
               <li><a href={`${home}#features`}>{t.nav.features}</a></li>
               <li><a href={`${home}#roadmap`}>{t.nav.roadmap}</a></li>
@@ -30,7 +30,7 @@ export function SiteFooter({ locale, route }: { locale: Locale; route: Route }) 
             </ul>
           </div>
           <div className="footer__col">
-            <h4>{t.footer.legal}</h4>
+            <h4 className="k-eyebrow">{t.footer.legal}</h4>
             <ul>
               <li><a href={localePath(locale, "/privacy/")}>{t.footer.privacy}</a></li>
               <li><a href={localePath(locale, "/terms-and-conditions/")}>{t.footer.terms}</a></li>
@@ -38,18 +38,18 @@ export function SiteFooter({ locale, route }: { locale: Locale; route: Route }) 
             </ul>
           </div>
           <div className="footer__col">
-            <h4>{t.footer.contact}</h4>
+            <h4 className="k-eyebrow">{t.footer.contact}</h4>
             <ul>
               <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
             </ul>
             <div className="footer__social">
-              <a href={site.social.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <a className="k-btn k-btn--icon k-btn--sm" href={site.social.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
                 <InstagramIcon />
               </a>
-              <a href={site.social.x} target="_blank" rel="noopener noreferrer" aria-label="X">
+              <a className="k-btn k-btn--icon k-btn--sm" href={site.social.x} target="_blank" rel="noopener noreferrer" aria-label="X">
                 <XIcon />
               </a>
-              <a href={site.social.tiktok} target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+              <a className="k-btn k-btn--icon k-btn--sm" href={site.social.tiktok} target="_blank" rel="noopener noreferrer" aria-label="TikTok">
                 <TikTokIcon />
               </a>
             </div>
@@ -57,7 +57,9 @@ export function SiteFooter({ locale, route }: { locale: Locale; route: Route }) 
         </div>
         <div className="footer__bottom">
           <div className="tmdb">
-            <a className="tmdb__logo" href={site.tmdbUrl} target="_blank" rel="noopener noreferrer">TMDB</a>
+            <a href={site.tmdbUrl} target="_blank" rel="noopener noreferrer">
+              <img src="/tmdb.svg" alt="TMDB" width={44} height={32} />
+            </a>
             <span>{t.footer.tmdb}</span>
           </div>
           <div className="footer__meta">

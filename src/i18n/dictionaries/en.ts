@@ -23,7 +23,6 @@ export const en = {
     titleAccent: "Beautifully kept.",
     subtitle:
       "Klaq keeps track of every movie and series you watch, from your progress and ratings to your full history, in an app that feels as good as the stories you love.",
-    scroll: "Discover",
   },
   stores: {
     appStoreTop: "Download on the",
@@ -36,6 +35,7 @@ export const en = {
     rated: "You rated",
     watched: "Watched",
     season: "S",
+    score: "4.5",
   },
   features: {
     eyebrow: "Features",
@@ -75,6 +75,8 @@ export const en = {
         text: "Light or dark, with the accent color that suits you. Try it:",
       },
     },
+    of: "of",
+    nextUp: "Up next",
     statsLabel: "hours this month",
     synced: "Synced",
     shareRating: "Share to socials",
@@ -85,7 +87,6 @@ export const en = {
       coral: "Coral",
       spring: "Spring",
       amber: "Amber",
-      green: "Green",
     },
   },
   marquee: ["Movies", "Series", "Soap operas", "Shows", "Anime", "Documentaries"],

@@ -11,7 +11,7 @@ export function SiteHeader({ locale, route }: { locale: Locale; route: Route }) 
 
   return (
     <>
-      <a className="skip-link" href="#main">
+      <a className="skip-link k-btn k-btn--primary k-btn--sm" href="#main">
         {t.nav.skip}
       </a>
       <HeaderScroll>
@@ -35,11 +35,11 @@ export function SiteHeader({ locale, route }: { locale: Locale; route: Route }) 
                 label={t.language.switchTo}
                 short={t.language.short}
               />
-              <a className="btn btn--glass btn--sm btn--icon-label" href={`${home}#contribute`}>
+              <a className="k-btn k-btn--sm btn--support" href={`${home}#contribute`} aria-label={t.nav.contribute}>
                 <HeartIcon />
                 <span>{t.nav.contribute}</span>
               </a>
-              <a className="btn btn--accent btn--sm" href={`${home}#download`}>
+              <a className="k-btn k-btn--primary k-btn--sm" href={`${home}#download`}>
                 {t.nav.download}
               </a>
             </div>

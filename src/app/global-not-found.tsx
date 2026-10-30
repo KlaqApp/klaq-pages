@@ -15,7 +15,7 @@ export default function GlobalNotFound() {
           <h1>{en.notFound.title}</h1>
           <p>{en.notFound.text}</p>
           <p lang="pt-BR">{ptBr.notFound.text}</p>
-          <a className="btn btn--accent" href="/">
+          <a className="k-btn k-btn--primary" href="/">
             {en.notFound.cta}
           </a>
         </div>

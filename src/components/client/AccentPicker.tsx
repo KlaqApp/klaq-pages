@@ -2,31 +2,26 @@
 
 import { useEffect, useState, type CSSProperties } from "react";
 
-export const accents = [
-  { id: "mint", dark: "#6fe3d4", light: "#2ec4b0" },
-  { id: "coral", dark: "#ff9f7a", light: "#e0764a" },
-  { id: "spring", dark: "#8fdb8f", light: "#3fa34d" },
-  { id: "amber", dark: "#ffc24d", light: "#c98a1b" },
-  { id: "green", dark: "#30d158", light: "#1d9e4f" },
-] as const;
+/** The highlight styles the app offers (tokens highlight-*). Mint is the default: no attribute. */
+export const accents = ["mint", "coral", "spring", "amber"] as const;
 
-type AccentId = (typeof accents)[number]["id"];
+type AccentId = (typeof accents)[number];
 const STORAGE_KEY = "klaq-accent";
 
-/** Same highlight styles the app offers; picking one recolors the whole page. */
+/** AccentSwatch row: picking one sets <html data-highlight> and recolors the whole page. */
 export function AccentPicker({ labels }: { labels: Record<AccentId, string> }) {
   const [current, setCurrent] = useState<AccentId>("mint");
 
   useEffect(() => {
-    const stored = document.documentElement.dataset.accent as AccentId | undefined;
+    const stored = document.documentElement.dataset.highlight as AccentId | undefined;
     if (stored) setCurrent(stored);
   }, []);
 
   const select = (id: AccentId) => {
     setCurrent(id);
     const root = document.documentElement;
-    if (id === "mint") delete root.dataset.accent;
-    else root.dataset.accent = id;
+    if (id === "mint") delete root.dataset.highlight;
+    else root.dataset.highlight = id;
     try {
       localStorage.setItem(STORAGE_KEY, id);
     } catch {}
@@ -34,18 +29,17 @@ export function AccentPicker({ labels }: { labels: Record<AccentId, string> }) {
 
   return (
     <div className="swatches" role="group">
-      {accents.map((a) => (
-        <button
-          key={a.id}
-          type="button"
-          className="swatch"
-          aria-pressed={current === a.id}
-          onClick={() => select(a.id)}
-          style={{ "--c": `light-dark(${a.light}, ${a.dark})` } as CSSProperties}
-        >
-          <i />
-          {labels[a.id]}
-        </button>
+      {accents.map((id) => (
+        <label key={id}>
+          <button
+            type="button"
+            className="k-swatch"
+            aria-pressed={current === id}
+            onClick={() => select(id)}
+            style={{ "--k-swatch": `var(--highlight-${id})` } as CSSProperties}
+          />
+          <span>{labels[id]}</span>
+        </label>
       ))}
     </div>
   );

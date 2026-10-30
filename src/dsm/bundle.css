@@ -1,0 +1,278 @@
+/* Klaq (Luna v2) — web components shared by the design system and klaq-pages.
+   Mirrors apps/mobile/lib/core/dsm: same metrics, same token roles. Reads only the
+   custom properties compiled from tokens.json; component-own measures (heights,
+   paddings, sizes) are copied from the Flutter widgets and live here, as they do there. */
+
+/* ---- Base ---------------------------------------------------------------- */
+.k-root {
+  font-family: var(--font-sans);
+  color: var(--label);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+.k-tabular { font-variant-numeric: tabular-nums; }
+
+/* Highlight styles (the accent the person picks in Settings). Movies & series only. */
+:root[data-highlight="coral"] { --accent: var(--highlight-coral); --accent-text: var(--highlight-coral-text); --ambient-glow: color-mix(in srgb, var(--highlight-coral) 10%, transparent); }
+:root[data-highlight="spring"] { --accent: var(--highlight-spring); --accent-text: var(--highlight-spring-text); --ambient-glow: color-mix(in srgb, var(--highlight-spring) 10%, transparent); }
+:root[data-highlight="amber"] { --accent: var(--highlight-amber); --accent-text: var(--highlight-amber-text); --ambient-glow: color-mix(in srgb, var(--highlight-amber) 10%, transparent); }
+
+/* Focus: one solid ring in accent-text (>= 4.9:1 on bg and elev in every theme). */
+.k-btn:focus-visible, .k-text-btn:focus-visible, .k-chip:focus-visible, .k-seg__opt:focus-visible,
+.k-swatch:focus-visible, .k-list__row:focus-visible, .k-section-title__action:focus-visible,
+.k-search:focus-within {
+  outline: 2px solid var(--accent-text);
+  outline-offset: 2px;
+}
+
+/* ---- Backdrop (AmbientBackground) ----------------------------------------- */
+.k-ambient {
+  background:
+    radial-gradient(120% 60% at 50% -10%, var(--ambient-glow), transparent 70%),
+    linear-gradient(180deg, var(--ambient-1), var(--ambient-2) 45%, var(--ambient-3));
+}
+
+/* ---- Surfaces ------------------------------------------------------------- */
+/* LunaSurface: opaque content. No border, blur or shadow. */
+.k-surface { background: var(--elev); border-radius: var(--radius-group); overflow: hidden; }
+.k-surface--card { border-radius: var(--radius-card); }
+.k-surface--2 { background: var(--elev-2); }
+
+/* GlassSurface: chrome only (header, floating buttons, menus, sheets, controls over media). */
+.k-glass {
+  background: var(--glass);
+  border: var(--hairline) solid var(--glass-stroke);
+  box-shadow: inset 0 var(--hairline) 0 var(--glass-highlight), var(--shadow-glass);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+}
+.k-glass--menu { border-radius: 22px; box-shadow: inset 0 var(--hairline) 0 var(--glass-highlight), var(--shadow-menu); }
+.k-sheet {
+  background: var(--sheet);
+  border-radius: var(--radius-sheet);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
+}
+
+/* LunaSeparator */
+.k-separator { height: var(--hairline); background: var(--separator); border: 0; margin: 0; }
+
+/* ---- LunaCard ------------------------------------------------------------- */
+.k-card { background: var(--elev); border-radius: var(--radius-group); padding: var(--s20); color: var(--label); }
+.k-card--hero { border-radius: var(--radius-card); }
+.k-card__head { display: flex; align-items: center; gap: var(--s8); }
+.k-card__icon { display: inline-flex; color: var(--accent-text); }
+.k-card__icon svg { width: 17px; height: 17px; }
+.k-card__title { margin: 0; font: 600 16px/22px var(--font-sans); letter-spacing: -0.2px; color: var(--label); }
+.k-card__sub { margin: var(--s4) 0 0; font: 500 15px/20px var(--font-sans); color: var(--label-2); }
+.k-card__body { margin-top: var(--s16); }
+
+/* ---- Buttons (GlassActionButton family) ----------------------------------- */
+.k-btn {
+  --k-btn-h: 50px;
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--s8);
+  height: var(--k-btn-h); padding: 0 20px; border: 0; border-radius: var(--radius-pill);
+  font: 600 17px/22px var(--font-sans); white-space: nowrap; text-decoration: none;
+  color: var(--label); background: var(--fill-2); cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform var(--motion-fast) var(--ease-standard), opacity var(--motion-standard) var(--ease-standard);
+}
+.k-btn svg { width: 18px; height: 18px; flex: none; }
+.k-btn:active { transform: scale(var(--pressed-scale)); }
+.k-btn--primary { background: var(--accent); color: var(--on-accent); }
+.k-btn--md { --k-btn-h: 44px; font-size: 15px; line-height: 20px; }
+.k-btn--md svg { width: 16px; height: 16px; }
+.k-btn--sm { --k-btn-h: 34px; padding: 0 14px; font-size: 13px; line-height: 18px; }
+.k-btn--sm svg { width: 14px; height: 14px; }
+.k-btn--block { display: flex; width: 100%; }
+.k-btn--media { background: var(--media-secondary); color: var(--on-media);
+  -webkit-backdrop-filter: blur(var(--media-blur)) saturate(var(--glass-saturate));
+  backdrop-filter: blur(var(--media-blur)) saturate(var(--glass-saturate)); }
+.k-btn--media.k-btn--primary { background: var(--media-primary); color: var(--media-primary-text); -webkit-backdrop-filter: none; backdrop-filter: none; }
+.k-btn[disabled], .k-btn[aria-disabled="true"] { opacity: 0.45; cursor: default; pointer-events: none; }
+/* GlassButton: icon-only circle. Floating = glass 44; inline = fill-2 at the neighbour's height. */
+.k-btn--icon { width: var(--k-btn-h); padding: 0; }
+.k-btn--icon svg { width: 20px; height: 20px; }
+.k-btn--float { --k-btn-h: 44px; width: 44px; padding: 0; color: var(--label); }
+
+/* LunaTextButton: tertiary, text only, 44 tall touch area. */
+.k-text-btn {
+  display: inline-flex; align-items: center; gap: 5px; min-height: 44px; padding: 0 var(--s8);
+  border: 0; background: none; cursor: pointer; text-decoration: none;
+  font: 500 17px/24px var(--font-sans); letter-spacing: -0.2px; color: var(--label-2);
+  transition: transform var(--motion-fast) var(--ease-standard);
+}
+.k-text-btn svg { width: 14px; height: 14px; }
+.k-text-btn:active { transform: scale(var(--pressed-scale)); }
+.k-text-btn--accent { color: var(--accent-text); }
+.k-text-btn--destructive { color: var(--destructive); font-weight: 400; }
+
+/* ---- LunaChip ------------------------------------------------------------- */
+.k-chip {
+  display: inline-flex; align-items: center; height: 34px; padding: 0 14px; border: 0;
+  border-radius: var(--radius-pill); background: var(--fill); color: var(--label);
+  font: 400 15px/20px var(--font-sans); white-space: nowrap; cursor: pointer; text-decoration: none;
+  transition: transform var(--motion-fast) var(--ease-standard);
+}
+.k-chip:active { transform: scale(var(--pressed-scale)); }
+
+/* ---- GlassSegmentedControl ------------------------------------------------ */
+.k-seg {
+  position: relative; display: grid; grid-auto-flow: column; grid-auto-columns: 1fr;
+  height: 32px; padding: 3px; border-radius: 12px; background: var(--fill-2);
+}
+.k-seg__thumb {
+  position: absolute; top: 3px; bottom: 3px; left: 3px;
+  width: calc((100% - 6px) / var(--k-seg-n, 2));
+  transform: translateX(calc(100% * var(--k-seg-i, 0)));
+  border-radius: 9px; background: var(--elev-2); box-shadow: var(--shadow-thumb);
+  transition: transform var(--motion-emphasized) var(--ease-spring);
+}
+.k-seg__opt {
+  position: relative; z-index: 1; min-width: 0; padding: 0 var(--s8); border: 0; background: none; cursor: pointer;
+  font: 500 14px/1 var(--font-sans); color: var(--label-2); white-space: nowrap; overflow: hidden;
+  transition: color var(--motion-standard) var(--ease-standard);
+}
+.k-seg__opt[aria-selected="true"], .k-seg__opt[aria-pressed="true"] { color: var(--label); font-weight: 600; }
+
+/* ---- Badges & rating ------------------------------------------------------ */
+/* GlassBadge: neutral glass or rating tone; small / md / lg. */
+.k-badge {
+  display: inline-flex; align-items: center; gap: var(--s4); padding: 4px 8px; border-radius: 8px;
+  background: var(--glass); border: 1px solid var(--glass-stroke); color: var(--label);
+  font: 600 11px/1.1 var(--font-sans); font-variant-numeric: tabular-nums; white-space: nowrap;
+}
+.k-badge svg { width: 10px; height: 10px; }
+.k-badge--md { padding: 8px 10px; border-radius: 12px; font-size: 13px; }
+.k-badge--md svg { width: 13px; height: 13px; }
+.k-badge--lg { padding: 10px 14px; border-radius: 16px; font-size: 15px; }
+.k-badge--lg svg { width: 15px; height: 15px; }
+.k-badge--rating {
+  background: color-mix(in srgb, var(--rating) 15%, transparent);
+  border-color: color-mix(in srgb, var(--rating) 30%, transparent);
+  color: var(--rating-text);
+}
+.k-badge--rating svg, .k-badge .k-star { color: var(--rating); }
+
+/* RatingBadge: inline, no capsule. Star in rating + number 600. */
+.k-rating { display: inline-flex; align-items: baseline; gap: var(--s4); font: 600 13px/1.1 var(--font-sans); font-variant-numeric: tabular-nums; color: var(--label); }
+.k-rating svg { width: 13px; height: 13px; color: var(--rating); align-self: center; }
+.k-rating--user { color: var(--rating-text); }
+.k-rating__scale { font-size: 11px; color: var(--label-2); }
+.k-rating--lg { font-size: 15px; }
+.k-rating--lg svg { width: 15px; height: 15px; }
+
+/* StatusPill: dot + eyebrow in label-2, no background. */
+.k-status { display: inline-flex; align-items: center; gap: 6px; font: 600 12px/16px var(--font-sans); letter-spacing: 0.6px; text-transform: uppercase; color: var(--label-2); }
+.k-status::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--k-status-color, currentColor); }
+.k-status--plain::before { display: none; }
+
+/* Eyebrow: LunaType.eyebrow. label-2 by default; --accent on the web's section overlines. */
+.k-eyebrow { display: inline-block; font: 600 12px/16px var(--font-sans); letter-spacing: 0.6px; text-transform: uppercase; color: var(--label-2); }
+.k-eyebrow--accent { color: var(--accent-text); }
+
+/* EpisodeCode */
+.k-code { font: 600 12px/16px var(--font-sans); letter-spacing: 0.3px; font-variant-numeric: tabular-nums; color: var(--accent-text); }
+.k-code--media { display: inline-block; padding: 3px 8px; border-radius: 8px; background: var(--media-plate); color: var(--on-media);
+  -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+
+/* ---- SectionTitle --------------------------------------------------------- */
+.k-section-title { display: flex; align-items: baseline; justify-content: space-between; gap: var(--s12); }
+.k-section-title__text { margin: 0; font: 700 22px/28px var(--font-sans); letter-spacing: -0.4px; color: var(--label); }
+.k-section-title__action { font: 500 15px/20px var(--font-sans); color: var(--accent-text); text-decoration: none; background: none; border: 0; padding: 0; cursor: pointer; }
+
+/* ---- GlassNotice ---------------------------------------------------------- */
+.k-notice {
+  --k-tone: var(--warning);
+  display: flex; align-items: center; gap: 10px; padding: 12px 14px; border-radius: var(--radius-group);
+  background: linear-gradient(color-mix(in srgb, var(--k-tone) 10%, transparent), color-mix(in srgb, var(--k-tone) 10%, transparent)), var(--elev);
+  color: var(--label); font: 700 15px/20px var(--font-sans);
+}
+.k-notice > svg { width: 17px; height: 17px; flex: none; color: var(--k-tone); }
+.k-notice--info { --k-tone: var(--accent-text); }
+.k-notice--success { --k-tone: var(--positive); }
+.k-notice--error { --k-tone: var(--destructive); }
+.k-notice--titled { align-items: flex-start; font-weight: 400; }
+.k-notice__title { display: block; font-weight: 600; margin-bottom: 2px; }
+.k-notice__message { color: var(--label-2); }
+
+/* ---- ProgressBar ---------------------------------------------------------- */
+.k-progress { position: relative; height: 3px; border-radius: 2px; background: var(--fill-2); overflow: hidden; }
+.k-progress--thick { height: 4px; }
+.k-progress--media { background: var(--media-track); }
+.k-progress__fill {
+  position: absolute; inset: 0 auto 0 0; width: calc(var(--value, 0) * 100%);
+  border-radius: 2px; background: var(--accent);
+  transition: width var(--motion-fill) var(--ease-fill);
+}
+.k-progress-row { display: flex; align-items: center; gap: 10px; }
+.k-progress-row .k-progress { flex: 1; }
+.k-progress-row__count { font: 400 13px/18px var(--font-sans); font-variant-numeric: tabular-nums; color: var(--label-2); }
+
+/* ---- Grouped list (GlassListSection / Row / Header / Footer) --------------- */
+.k-list { list-style: none; margin: 0; padding: 4px 0; background: var(--elev); border-radius: var(--radius-group); }
+.k-list__row {
+  position: relative; display: flex; align-items: center; gap: var(--s12); padding: 14px 18px;
+  color: var(--label); text-decoration: none; background: none; border: 0; width: 100%; text-align: left; font: inherit;
+}
+.k-list > li + li .k-list__row::before, .k-list > .k-list__row + .k-list__row::before {
+  content: ""; position: absolute; top: 0; left: 52px; right: 0; height: var(--hairline); background: var(--separator);
+}
+a.k-list__row, button.k-list__row { cursor: pointer; }
+.k-list__icon { display: inline-flex; justify-content: center; width: 22px; flex: none; color: var(--label-2); }
+.k-list__icon svg { width: 20px; height: 20px; }
+.k-list__text { flex: 1; min-width: 0; }
+.k-list__label { display: block; font: 600 16px/22px var(--font-sans); letter-spacing: -0.2px; }
+.k-list__sub { display: block; margin-top: 2px; font: 400 15px/20px var(--font-sans); color: var(--label-2); }
+.k-list__trail { display: inline-flex; align-items: center; gap: 6px; color: var(--label-2); font: 400 15px/20px var(--font-sans); }
+.k-list__chevron { width: 14px; height: 14px; color: var(--label-3); flex: none; }
+.k-list__row--destructive, .k-list__row--destructive .k-list__icon { color: var(--destructive); }
+.k-list-header { margin: var(--s32) 0 var(--s8); padding: 0 var(--s16); font: 400 13px/18px var(--font-sans); letter-spacing: 0.4px; text-transform: uppercase; color: var(--label-2); }
+.k-list-footer { margin: var(--s8) 0 0; padding: 0 var(--s16); font: 400 13px/18px var(--font-sans); color: var(--label-2); }
+
+/* ---- GlassEmptyState ------------------------------------------------------ */
+.k-empty { display: flex; flex-direction: column; align-items: center; text-align: center; padding: var(--s32) calc(var(--gutter) + 12px); }
+.k-empty__icon { width: 36px; height: 36px; color: var(--label-3); }
+.k-empty__title { margin: 14px 0 0; font: 600 20px/25px var(--font-sans); letter-spacing: -0.3px; color: var(--label); }
+.k-empty__message { margin: 6px 0 0; font: 400 15px/20px var(--font-sans); color: var(--label-2); max-width: 36ch; }
+.k-empty__action { margin-top: 18px; }
+
+/* ---- AccentSwatch --------------------------------------------------------- */
+.k-swatch {
+  width: 34px; height: 34px; padding: 0; border: 0; border-radius: 50%; cursor: pointer;
+  background: var(--k-swatch, var(--accent));
+  transition: box-shadow var(--motion-standard) var(--ease-standard), transform var(--motion-fast) var(--ease-standard);
+}
+.k-swatch:active { transform: scale(var(--pressed-scale)); }
+.k-swatch[aria-pressed="true"], .k-swatch[aria-checked="true"] {
+  box-shadow: 0 0 0 3px var(--elev), 0 0 0 5px var(--k-swatch, var(--accent));
+}
+
+/* ---- LunaSearchField ------------------------------------------------------ */
+.k-search { display: flex; align-items: center; gap: var(--s8); height: 44px; padding: 0 14px; border-radius: var(--radius-pill); background: var(--fill-2); color: var(--label-2); }
+.k-search svg { width: 18px; height: 18px; flex: none; }
+.k-search input { flex: 1; min-width: 0; border: 0; background: none; outline: none; font: 400 17px/24px var(--font-sans); letter-spacing: -0.2px; color: var(--label); }
+.k-search input::placeholder { color: var(--label-2); }
+
+/* ---- UserAvatar ----------------------------------------------------------- */
+.k-avatar {
+  --k-avatar-size: 40px;
+  display: inline-grid; place-items: center; width: var(--k-avatar-size); height: var(--k-avatar-size); border-radius: 50%;
+  background: linear-gradient(135deg, var(--k-avatar-from, var(--avatar-1-from)), var(--k-avatar-to, var(--avatar-1-to)));
+  color: #fff; font: 600 calc(var(--k-avatar-size) * 0.4)/1 var(--font-sans);
+}
+
+/* ---- Poster (MediaArtwork) ------------------------------------------------- */
+.k-poster { position: relative; aspect-ratio: 2 / 3; border-radius: var(--radius-poster); overflow: hidden; background: var(--fill); }
+.k-poster img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.k-poster--thumb { border-radius: var(--radius-thumb); }
+.k-poster--empty {
+  display: flex; align-items: flex-end; padding: 10px; font: 600 13px/18px var(--font-sans); color: var(--label-2);
+  background: repeating-linear-gradient(135deg, var(--fill) 0 8px, transparent 8px 16px), var(--elev);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .k-btn, .k-text-btn, .k-chip, .k-seg__thumb, .k-seg__opt, .k-swatch, .k-progress__fill { transition: none; }
+}

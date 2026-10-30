@@ -3,9 +3,12 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
+    "predev": "node scripts/build-tokens.mjs",
     "dev": "next dev",
+    "prebuild": "node scripts/build-tokens.mjs",
     "build": "next build",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "dsm:tokens": "node scripts/build-tokens.mjs"
   },
   "dependencies": {
     "marked": "^18.0.14",

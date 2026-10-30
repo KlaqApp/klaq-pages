@@ -19,9 +19,11 @@ export function AppTour({ t }: { t: Dictionary["tour"] }) {
     <section id="tour" className="tour" style={{ "--n": n } as CSSProperties}>
       <div className="tour__sticky">
         <div className="container tour__head">
-          <span className="eyebrow" data-reveal>{t.eyebrow}</span>
-          <h2 className="section-title" data-reveal style={{ "--d": 1 } as CSSProperties}>{t.title}</h2>
-          <p className="section-sub" data-reveal style={{ "--d": 2 } as CSSProperties}>{t.subtitle}</p>
+          <div className="section-head">
+            <span className="k-eyebrow k-eyebrow--accent" data-reveal>{t.eyebrow}</span>
+            <h2 className="section-title" data-reveal style={{ "--d": 1 } as CSSProperties}>{t.title}</h2>
+            <p className="section-sub" data-reveal style={{ "--d": 2 } as CSSProperties}>{t.subtitle}</p>
+          </div>
         </div>
 
         <div className="tour__stage">
@@ -42,14 +44,14 @@ export function AppTour({ t }: { t: Dictionary["tour"] }) {
           </div>
 
           <div className="tour__side">
-            <div className="tour__captions">
+            <ul className="tour__captions">
               {t.screens.map((s, i) => (
-                <div key={s.title} className="tour__caption" style={{ animationRange: range(i, n) } as CSSProperties}>
+                <li key={s.title} className="tour__caption" style={{ animationRange: range(i, n) } as CSSProperties}>
                   <h3>{s.title}</h3>
                   <p>{s.text}</p>
-                </div>
+                </li>
               ))}
-            </div>
+            </ul>
             <div className="tour__dots" aria-hidden>
               {t.screens.map((s, i) => (
                 <i key={s.title} className="tour__dot" style={{ animationRange: range(i, n) } as CSSProperties} />

@@ -25,7 +25,6 @@ export const ptBr: Dictionary = {
     titleAccent: "Em um só lugar.",
     subtitle:
       "O Klaq guarda cada filme e série que você assiste, do seu progresso às suas notas e seu histórico, em um app tão gostoso de usar quanto as histórias que você ama.",
-    scroll: "Descubra",
   },
   stores: {
     appStoreTop: "Baixar na",
@@ -38,6 +37,7 @@ export const ptBr: Dictionary = {
     rated: "Sua nota",
     watched: "Assistido",
     season: "T",
+    score: "4,5",
   },
   features: {
     eyebrow: "Recursos",
@@ -77,6 +77,8 @@ export const ptBr: Dictionary = {
         text: "Claro ou escuro, com a cor de destaque que combina com você. Experimente:",
       },
     },
+    of: "de",
+    nextUp: "Próximo",
     statsLabel: "horas neste mês",
     synced: "Sincronizado",
     shareRating: "Compartilhar nas redes",
@@ -87,7 +89,6 @@ export const ptBr: Dictionary = {
       coral: "Coral",
       spring: "Primavera",
       amber: "Âmbar",
-      green: "Verde",
     },
   },
   marquee: ["Filmes", "Séries", "Novelas", "Programas", "Animes", "Documentários"],

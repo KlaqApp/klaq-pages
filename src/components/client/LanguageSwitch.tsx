@@ -15,7 +15,7 @@ type Props = {
 export function LanguageSwitch({ href, target, label, short, hreflang }: Props) {
   return (
     <a
-      className="lang-switch"
+      className="k-chip lang-switch"
       href={href}
       hrefLang={hreflang}
       aria-label={label}

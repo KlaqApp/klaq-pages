@@ -4,6 +4,7 @@ import { AccentPicker } from "../client/AccentPicker";
 import {
   BookmarkIcon,
   ChartIcon,
+  CheckIcon,
   ClockIcon,
   PaletteIcon,
   PlayIcon,
@@ -15,11 +16,13 @@ import {
 
 const v = (vars: Record<string, string | number>) => vars as CSSProperties;
 
+/** A feature tile: LunaCard at hero radius, icon in a fill-2 circle, title-3 + subheadline. */
 function Tile({
   icon,
   title,
   text,
   wide,
+  full,
   order,
   children,
 }: {
@@ -27,12 +30,14 @@ function Tile({
   title: string;
   text: string;
   wide?: boolean;
+  /** Spans the whole row on the 3-column grid (one column on the 2-column one). */
+  full?: boolean;
   order: number;
   children?: ReactNode;
 }) {
   return (
-    <article className={`tile glass${wide ? " tile--wide" : ""}`} data-reveal style={v({ "--d": order % 4 })}>
-      <span className="icon-chip">{icon}</span>
+    <article className={`tile k-card k-card--hero${wide ? " tile--wide" : ""}${full ? " tile--full" : ""}`} data-reveal style={v({ "--d": order % 4 })}>
+      <span className="tile__icon">{icon}</span>
       <h3>{title}</h3>
       <p>{text}</p>
       {children && <div className="tile__visual">{children}</div>}
@@ -40,38 +45,43 @@ function Tile({
   );
 }
 
-function EpisodeGrid({ season }: { season: string }) {
+/** Seasons as ProgressCountRow ("10 of 10") and the next episode as StatusPill + EpisodeCode. */
+function Seasons({ season, of, nextUp }: { season: string; of: string; nextUp: string }) {
   const seasons = [
     { label: `${season}1`, total: 10, watched: 10 },
     { label: `${season}2`, total: 10, watched: 4 },
   ];
   return (
-    <div className="episodes" aria-hidden>
-      {seasons.map((s) => (
-        <div className="episodes__row" key={s.label}>
-          <span className="episodes__label">{s.label}</span>
-          <div className="episodes__dots">
-            {Array.from({ length: s.total }, (_, i) => (
-              <i
-                key={i}
-                style={v({ "--i": i })}
-                data-on={i < s.watched ? "" : undefined}
-                data-next={i === s.watched ? "" : undefined}
-              />
-            ))}
+    <div aria-hidden>
+      <div className="seasons">
+        {seasons.map((s) => (
+          <div className="seasons__row" key={s.label}>
+            <span className="k-code">{s.label}</span>
+            <div className="k-progress-row">
+              <div className="k-progress" style={v({ "--value": s.watched / s.total })}>
+                <span className="k-progress__fill" />
+              </div>
+              <span className="k-progress-row__count">
+                {s.watched} {of} {s.total}
+              </span>
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
+      <div className="next-up">
+        <span className="k-status">{nextUp}</span>
+        <span className="k-code">S02E05</span>
+      </div>
     </div>
   );
 }
 
-function Stars({ share }: { share: string }) {
+function Stars({ share, score }: { share: string; score: string }) {
   // 4.5 stars: the last one is clipped halfway.
   const clips = ["0%", "0%", "0%", "0%", "50%"];
   return (
-    <>
-      <div className="big-stars" aria-hidden>
+    <div aria-hidden>
+      <div className="big-stars">
         {clips.map((clip, i) => (
           <span key={i}>
             <StarIcon />
@@ -79,47 +89,50 @@ function Stars({ share }: { share: string }) {
           </span>
         ))}
       </div>
-      <span className="sync" aria-hidden>
-        <ShareIcon />
-        {share}
-      </span>
-    </>
+      <div className="rating-line">
+        <span className="k-badge k-badge--rating k-badge--md">
+          <StarIcon />
+          {score}
+        </span>
+        <span className="k-btn k-btn--sm">
+          <ShareIcon />
+          {share}
+        </span>
+      </div>
+    </div>
   );
 }
 
-const barHeights = [38, 62, 45, 80, 56, 100, 72];
-const avatarGradients = [
-  ["#7fd8c9", "#3e9e93"],
-  ["#b7a3ee", "#7059c2"],
-  ["#f2a38e", "#c7614f"],
-  ["#f3cd86", "#c9913a"],
-];
+const barHeights = [0.38, 0.62, 0.45, 0.8, 0.56, 1, 0.72];
+const CURRENT_DAY = 5;
 
-export function Features({ t, season }: { t: Dictionary["features"]; season: string }) {
+export function Features({ t, season, score }: { t: Dictionary["features"]; season: string; score: string }) {
   const f = t.items;
   return (
     <section id="features" className="section">
       <div className="container">
         <div className="section-head section-head--center">
-          <span className="eyebrow" data-reveal>{t.eyebrow}</span>
+          <span className="k-eyebrow k-eyebrow--accent" data-reveal>{t.eyebrow}</span>
           <h2 className="section-title" data-reveal style={v({ "--d": 1 })}>{t.title}</h2>
           <p className="section-sub" data-reveal style={v({ "--d": 2 })}>{t.subtitle}</p>
         </div>
 
         <div className="bento">
           <Tile wide order={0} icon={<PlayIcon />} title={f.progress.title} text={f.progress.text}>
-            <EpisodeGrid season={season} />
+            <Seasons season={season} of={t.of} nextUp={t.nextUp} />
           </Tile>
           <Tile order={1} icon={<StarIcon />} title={f.ratings.title} text={f.ratings.text}>
-            <Stars share={t.shareRating} />
+            <Stars share={t.shareRating} score={score} />
           </Tile>
           <Tile order={2} icon={<BookmarkIcon />} title={f.watchlist.title} text={f.watchlist.text}>
             <div className="stack" aria-hidden>
-              <div className="m-poster art-6" />
-              <div className="m-poster art-1">
-                <span className="bookmark" />
+              <div className="k-poster art-3" />
+              <div className="k-poster art-1">
+                <span className="k-badge">
+                  <BookmarkIcon />
+                </span>
               </div>
-              <div className="m-poster art-2" />
+              <div className="k-poster art-2" />
             </div>
           </Tile>
 
@@ -132,7 +145,7 @@ export function Features({ t, season }: { t: Dictionary["features"]; season: str
               <div className="bars">
                 {barHeights.map((h, i) => (
                   <div key={i}>
-                    <i style={v({ "--h": `${h}%`, "--i": i })} />
+                    <i style={v({ "--h": h, "--i": i })} data-current={i === CURRENT_DAY ? "" : undefined} />
                     <span>{t.days[i]}</span>
                   </div>
                 ))}
@@ -140,11 +153,11 @@ export function Features({ t, season }: { t: Dictionary["features"]; season: str
             </div>
           </Tile>
           <Tile order={1} icon={<ClockIcon />} title={f.history.title} text={f.history.text}>
-            <ul className="timeline" aria-hidden>
+            <ul className="history" aria-hidden>
               {t.historyItems.map((item, i) => (
                 <li key={item}>
                   {item}
-                  <span>{["21:40", "20:15", "18:02"][i]}</span>
+                  <time>{["21:40", "20:15", "18:02"][i]}</time>
                 </li>
               ))}
             </ul>
@@ -154,9 +167,11 @@ export function Features({ t, season }: { t: Dictionary["features"]; season: str
               {["A", "M", "J", "L"].map((initial, i) => (
                 <span
                   key={initial}
+                  className="k-avatar"
                   style={v({
                     "--i": i,
-                    background: `linear-gradient(135deg, ${avatarGradients[i][0]}, ${avatarGradients[i][1]})`,
+                    "--k-avatar-from": `var(--avatar-${i + 1}-from)`,
+                    "--k-avatar-to": `var(--avatar-${i + 1}-to)`,
                   })}
                 >
                   {initial}
@@ -165,13 +180,13 @@ export function Features({ t, season }: { t: Dictionary["features"]; season: str
             </div>
           </Tile>
 
-          <Tile wide order={0} icon={<SyncIcon />} title={f.offline.title} text={f.offline.text}>
-            <span className="sync" aria-hidden>
-              <SyncIcon />
+          <Tile order={0} icon={<SyncIcon />} title={f.offline.title} text={f.offline.text}>
+            <p className="k-notice k-notice--success" aria-hidden>
+              <CheckIcon />
               {t.synced}
-            </span>
+            </p>
           </Tile>
-          <Tile wide order={1} icon={<PaletteIcon />} title={f.theme.title} text={f.theme.text}>
+          <Tile full order={1} icon={<PaletteIcon />} title={f.theme.title} text={f.theme.text}>
             <AccentPicker labels={t.accents} />
           </Tile>
         </div>

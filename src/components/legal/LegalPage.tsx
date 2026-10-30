@@ -68,15 +68,15 @@ export function LegalPage({ locale, doc }: { locale: Locale; doc: LegalDoc }) {
       <SiteHeader locale={locale} route={route} />
       <main id="main">
         <section className="legal-hero container">
-          <span className="eyebrow" data-reveal>{t.footer.legal}</span>
+          <span className="k-eyebrow k-eyebrow--accent" data-reveal>{t.footer.legal}</span>
           <h1 data-reveal style={{ "--d": 1 } as CSSProperties}>{copy.title}</h1>
           <p data-reveal style={{ "--d": 2 } as CSSProperties}>{copy.description}</p>
           <div className="legal-meta" data-reveal style={{ "--d": 3 } as CSSProperties}>
-            <span className="chip glass">
+            <span className="k-chip">
               <CalendarIcon />
               {t.legal.effective}
             </span>
-            <a className="chip glass" href={localePath(locale)}>
+            <a className="k-chip" href={localePath(locale)}>
               <ArrowLeftIcon />
               {t.legal.backHome}
             </a>
@@ -85,7 +85,7 @@ export function LegalPage({ locale, doc }: { locale: Locale; doc: LegalDoc }) {
 
         <div className="container legal-layout">
           <aside className="toc">
-            <details className="toc__mobile glass">
+            <details className="toc__mobile k-surface">
               <summary>
                 {t.legal.contents}
                 <ChevronDownIcon />
@@ -93,14 +93,14 @@ export function LegalPage({ locale, doc }: { locale: Locale; doc: LegalDoc }) {
               <TocList toc={toc} />
             </details>
             <nav className="toc__desktop" aria-label={t.legal.contents}>
-              <p className="toc__title">{t.legal.contents}</p>
+              <p className="toc__title k-eyebrow">{t.legal.contents}</p>
               <TocList toc={toc} />
             </nav>
           </aside>
 
           <div>
             {t.legal.translationNotice && (
-              <p className="notice glass">
+              <p className="k-notice k-notice--info k-notice--titled">
                 <InfoIcon />
                 <span>
                   {t.legal.translationNotice}{" "}
@@ -108,7 +108,7 @@ export function LegalPage({ locale, doc }: { locale: Locale; doc: LegalDoc }) {
                 </span>
               </p>
             )}
-            <article className="prose glass" dangerouslySetInnerHTML={{ __html: html }} />
+            <article className="prose" dangerouslySetInnerHTML={{ __html: html }} />
           </div>
         </div>
       </main>
