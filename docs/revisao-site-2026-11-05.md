@@ -184,12 +184,59 @@ público. Ver também o item 1.6.
 
 ---
 
-## 5. Ordem sugerida
+## 5. Status das correções (mesma data)
 
-1. **Legal (bloqueia as lojas):** reescrever política e termos em pt-BR com LGPD (1.1–1.5), página de
-   exclusão de conta de verdade (1.4) e trocar o print com e-mail (1.6). Em paralelo, exclusão de conta
-   no app e no backend.
-2. **Conversão:** link real do beta e remover links `#` (2.5).
-3. **Conteúdo:** roadmap e Recursos (2.1, 2.2), textos (2.6).
-4. **Visual:** tokens e cor ciano (2.3) e prints novos (2.4).
-5. **Páginas novas:** suporte/FAQ e regras da comunidade (3).
+### Corrigido no site
+
+- **Legal:** Política de Privacidade, Termos e a página de exclusão de conta reescritos em pt-BR e
+  inglês, com base no que o app e o claquete fazem (dados, visibilidade, terceiros, retenção real,
+  moderação, regras da comunidade, LGPD, foro no Brasil). Saíram o Crashlytics, a "idade", o
+  representante na UE, os relatórios de transparência e o rodapé do gerador. Vigência:
+  5/11/2026, num lugar só (`legal.effective`).
+- **`/delete-account/`:** virou uma página de verdade (EN e `/pt-br/delete-account/`) com o botão do
+  formulário, o pedido por e-mail, o que é apagado e o que fica. Entrou no sitemap e o rodapé aponta
+  para a versão do idioma.
+- **Print do perfil:** o e-mail pessoal foi apagado da imagem.
+- **Roadmap:** livros e personalização saíram (já existem). Ficaram jogos, diário de leitura, listas
+  personalizadas, listas compartilhadas e lembretes de episódios.
+- **Recursos:** card de livros no lugar do social; textos de nota (meia estrela, review, compartilhar
+  como imagem), estatísticas e "Do seu jeito" (tema automático/claro/escuro, sua cor, ícones).
+- **Comunidade (seção nova, `#community`, no menu e no rodapé):** reviews e respostas, feed de
+  atividade, conta privada com pedido para seguir, avisos push, denunciar/bloquear e regras.
+- **Hero, meta e chips:** incluem livros e amigos.
+- **Cor:** `tokens.json` passou de mint para o ciano do app (destaque, texto, `on-accent`, brilho do
+  fundo); o seletor mostra "Ciano" e quem tinha `mint` salvo cai no padrão.
+- **Disponibilidade:** "Em breve na App Store e no Google Play" e menção ao beta fechado. O botão do
+  beta abre um e-mail enquanto `betaFormUrl` estiver vazio; ícones de redes sociais ficam escondidos
+  enquanto as URLs estiverem vazias.
+- **Tour:** as animações usam a faixa `contain`. Antes, a tela "Início" quase não aparecia no desktop
+  (o celular já fixava mostrando a Gaveta) e as legendas se sobrepunham na troca. Agora a primeira
+  tela aparece ao entrar, a última fica ao sair e as legendas trocam sem sobreposição.
+- **README:** página de exclusão, links vazios e a cor ciano.
+
+Validado com `npm run typecheck`, `npm run build` (14 páginas) e prints em 1440 px e 390 px, nos temas
+claro e escuro, sem rolagem horizontal nem erros no console.
+
+### Depende de você
+
+- **Decisões jurídicas:** revisar os textos (de preferência com um advogado), principalmente
+  idade mínima (16+), prazo de 30 dias para exclusão, foro e qual idioma prevalece (o aviso ainda diz
+  inglês; para o público brasileiro, o português faz mais sentido).
+- **Infraestrutura:** confirmar o destino dos backups (o runbook cita R2 ou B2 só como exemplo) e a
+  região do Supabase. Os textos ficaram genéricos nesses pontos.
+- **Links:** preencher `betaFormUrl` (TestFlight público ou formulário), as redes sociais e, quando
+  houver, `supportUrl` e as URLs das lojas em `src/config/site.ts`.
+- **Prints novos:** os 6 prints do tour são de 28/09 (destaque verde antigo, sem livros nem reviews).
+  Precisa tirar no simulador; vale incluir livros, reviews e perfil público.
+- **Histórico do git:** o e-mail pessoal continua nos commits antigos de `public/screens/profile.jpg`
+  (o repositório é público). Só some reescrevendo o histórico.
+- **Design system:** levar a troca mint → ciano para o artefato "Klaq" (Design System).
+
+### Fora do site
+
+- **App + backend:** exclusão de conta dentro do app e `DELETE /me` no claquete (exigência da
+  App Store).
+- **App:** sair da conta não apaga a cópia local (Isar). Num aparelho compartilhado, a próxima pessoa
+  pode ver a biblioteca anterior.
+- **App:** chamar `DELETE /users/:id/block` (desbloquear).
+- **claquete:** remover `GET /greet`.
