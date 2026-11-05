@@ -2,10 +2,11 @@ export const en = {
   meta: {
     title: "Klaq | Your personal watch diary",
     description:
-      "Track every movie and series you watch, with progress, ratings, lists and history all beautifully kept in one app for iOS and Android.",
+      "Track the movies, series and books you love: progress, ratings, reviews, lists and history, with your friends along for the ride. Coming soon to iOS and Android.",
   },
   nav: {
     features: "Features",
+    community: "Community",
     roadmap: "What's coming",
     download: "Download",
     contribute: "Support",
@@ -19,10 +20,10 @@ export const en = {
   },
   hero: {
     eyebrow: "Your personal watch diary",
-    titleLead: "Everything you watch.",
+    titleLead: "Everything you watch and read.",
     titleAccent: "Beautifully kept.",
     subtitle:
-      "Klaq keeps track of every movie and series you watch, from your progress and ratings to your full history, in an app that feels as good as the stories you love.",
+      "Klaq keeps track of every movie, series and book, from your progress and ratings to your full history, and lets you share it with friends in an app that feels as good as the stories you love.",
   },
   stores: {
     appStoreTop: "Download on the",
@@ -40,7 +41,7 @@ export const en = {
   features: {
     eyebrow: "Features",
     title: "Made for people who love what they watch.",
-    subtitle: "Everything you need to remember your screen life, and nothing you don't.",
+    subtitle: "Everything you need to remember your screen (and page) life, and nothing you don't.",
     items: {
       progress: {
         title: "Never lose your place",
@@ -48,7 +49,7 @@ export const en = {
       },
       ratings: {
         title: "Rate what you watch",
-        text: "Stars and notes, so you remember why you loved it (or didn't).",
+        text: "Half-star ratings and, if you feel like it, a review. Share your rating as an image.",
       },
       watchlist: {
         title: "Want to watch",
@@ -60,11 +61,11 @@ export const en = {
       },
       stats: {
         title: "Your numbers",
-        text: "Hours watched, favorite genres and how your year on screen is going.",
+        text: "Hours watched, favorite genres, how you rate compared to everyone else and how your year on screen is going.",
       },
-      social: {
-        title: "Better with friends",
-        text: "Follow friends, see what they're watching and keep your profile private if you prefer.",
+      books: {
+        title: "Books too",
+        text: "Your bookshelf lives in Klaq: want to read, reading and read, with page progress, ratings and reviews.",
       },
       offline: {
         title: "Works offline",
@@ -72,24 +73,79 @@ export const en = {
       },
       theme: {
         title: "Make it yours",
-        text: "Light or dark, with the accent color that suits you. Try it:",
+        text: "Automatic, light or dark theme, the accent color that suits you (or any color you like) and three app icons to choose from. Try it:",
       },
     },
     of: "of",
     nextUp: "Up next",
     statsLabel: "hours this month",
     synced: "Synced",
-    shareRating: "Share to socials",
+    shareRating: "Share",
     days: ["M", "T", "W", "T", "F", "S", "S"],
     historyItems: ["Movie", "Episode", "Rewatch"],
+    bookStatus: "Reading",
+    bookPages: "page 184 of 320",
+    bookShelves: ["Want to read", "Reading", "Read"],
     accents: {
-      mint: "Mint",
+      cyan: "Cyan",
       coral: "Coral",
       spring: "Spring",
       amber: "Amber",
     },
   },
-  marquee: ["Movies", "Series", "Soap operas", "Shows", "Anime", "Documentaries"],
+  community: {
+    eyebrow: "Community",
+    title: "Better with friends.",
+    subtitle:
+      "Follow people, see what they're watching and reading, and talk about it. You decide who sees your profile.",
+    items: {
+      reviews: {
+        title: "Reviews and replies",
+        text: "Write what you thought about a movie, series, episode or book. Read other people's takes and reply to them.",
+      },
+      feed: {
+        title: "Your friends' activity",
+        text: "See what the people you follow watched and rated, in a feed that keeps the two apart.",
+      },
+      privacy: {
+        title: "Private profile, if you want",
+        text: "With a private account, only the people you approve see your history, lists and shelf.",
+      },
+      notifications: {
+        title: "Notifications that matter",
+        text: "New followers, accepted requests and replies to your reviews, straight to your phone.",
+      },
+      safety: {
+        title: "A respectful space",
+        text: "Report reviews and replies, block anyone and keep spoilers marked. Community rules apply to everyone.",
+      },
+    },
+    review: {
+      name: "Marina",
+      handle: "@marina",
+      score: "4.5",
+      title: "Your Friends & Neighbors",
+      text: "The cast carries every scene, and the last episode got me. Can't wait for the next season.",
+      spoiler: "Spoiler",
+      replies: "3 replies",
+      reply: "Reply",
+    },
+    feed: [
+      { initial: "A", name: "Ana", verb: "watched", what: "The Pitt · S02E05" },
+      { initial: "R", name: "Rafa", verb: "rated", what: "Dune: Part Two", score: "5" },
+      { initial: "J", name: "Júlia", verb: "started reading", what: "The Midnight Library" },
+    ],
+    request: {
+      label: "Follow request",
+      name: "Leo",
+      handle: "@leo",
+      accept: "Accept",
+      decline: "Decline",
+    },
+    notices: ["Ana started following you", "Rafa replied to your review"],
+    safetyActions: ["Report review", "Block @user", "Community rules"],
+  },
+  marquee: ["Movies", "Series", "Soap operas", "Shows", "Anime", "Documentaries", "Books"],
   tour: {
     eyebrow: "Take a look",
     title: "This is Klaq. For real.",
@@ -122,7 +178,7 @@ export const en = {
       },
       {
         title: "Profile",
-        text: "Your stats, your people, and where everything syncs from.",
+        text: "Your stats, your followers and the people you follow.",
         image: "/screens/profile.jpg",
       },
     ],
@@ -134,12 +190,12 @@ export const en = {
     badge: "Coming soon",
     items: [
       {
-        title: "Books and games too",
-        text: "Track everything you're into, not just movies and series.",
+        title: "Games",
+        text: "Log what you play with the same care as your movies and books.",
       },
       {
-        title: "Make it yours",
-        text: "Personalize your profile and pick the app theme that fits you.",
+        title: "Reading diary",
+        text: "Every page you log becomes a day in your diary, like the timeline for movies and series.",
       },
       {
         title: "Custom lists",
@@ -150,20 +206,22 @@ export const en = {
         text: "Plan what to watch together with friends and family.",
       },
       {
-        title: "Smart notifications",
-        text: "Personalized reminders for new episodes and upcoming releases.",
+        title: "Episode reminders",
+        text: "A heads-up when a new episode of a series you watch comes out.",
       },
     ],
   },
   download: {
     eyebrow: "Download",
     title: "Your next episode is waiting.",
-    subtitle: "Available for iOS and Android.",
+    subtitle: "Coming soon to the App Store and Google Play.",
   },
   beta: {
     title: "Not live yet?",
-    subtitle: "Request access to the beta and be among the first to try Klaq.",
+    subtitle: "Klaq is in a closed beta on iPhone and Android. Request access and be among the first to try it.",
     cta: "Request beta access",
+    // Used when there is no sign-up form yet: the button opens an email instead.
+    emailSubject: "I want to try the Klaq beta",
   },
   contribute: {
     eyebrow: "Support",
@@ -192,18 +250,26 @@ export const en = {
     rights: "All rights reserved.",
   },
   legal: {
-    effective: "Effective September 19, 2026",
+    effective: "Effective November 5, 2026",
     contents: "On this page",
     backHome: "Back to home",
     backToTop: "Back to top",
     translationNotice: "",
     privacy: {
       title: "Privacy Policy",
-      description: "How Klaq collects, uses and protects your personal data.",
+      description: "What Klaq collects, why, who it is shared with and how to exercise your rights.",
     },
     terms: {
       title: "Terms & Conditions",
-      description: "The terms that apply when you download and use Klaq.",
+      description: "The rules for using Klaq, including the community rules for reviews and replies.",
+    },
+    deleteAccount: {
+      title: "Delete your account",
+      description: "How to delete your Klaq account and what happens to your data.",
+      ctaText: "Fill in the form with the email you use to sign in to Klaq. You can also ask by email.",
+      formCta: "Request account deletion",
+      emailCta: "Ask by email",
+      emailSubject: "Delete my Klaq account",
     },
   },
   notFound: {

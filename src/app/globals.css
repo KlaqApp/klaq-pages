@@ -322,7 +322,8 @@ a.store:active { transform: scale(var(--pressed-scale)); }
 }
 @media (min-width: 1040px) {
   .bento { grid-template-columns: repeat(3, 1fr); gap: var(--s16); }
-  /* Rows: progress + ratings / watchlist + stats / history + friends + offline / theme. */
+  /* Features: progress + ratings / watchlist + stats / history + books + offline / theme.
+     Community: reviews + feed / privacy + notifications + safety. */
   .tile.tile--full {
     grid-column: 1 / -1;
     display: grid;
@@ -430,18 +431,66 @@ a.store:active { transform: scale(var(--pressed-scale)); }
 .history li::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
 .history time { margin-left: auto; font: var(--t-footnote); font-variant-numeric: tabular-nums; color: var(--label-2); }
 
-/* Friends: initials avatars overlapping. */
-.avatars { display: flex; }
-.avatars .k-avatar {
-  --k-avatar-size: 48px;
-  margin-left: -12px;
-  box-shadow: 0 0 0 3px var(--elev);
-  transition: transform var(--motion-emphasized) var(--ease-standard);
-}
-.avatars .k-avatar:first-child { margin-left: 0; }
-.tile:hover .avatars .k-avatar { transform: translateX(calc(var(--i) * 4px)); }
-
 .tile .k-notice { max-width: 360px; }
+
+/* Books: a cover beside StatusPill + page progress, and the three shelves as chips. */
+.book { display: flex; align-items: center; gap: var(--s16); }
+.book .k-poster { width: 56px; flex: none; }
+.book__info { display: grid; gap: var(--s8); flex: 1; min-width: 0; max-width: 240px; }
+.book__info .k-status { --k-status-color: var(--accent); }
+.book__pages { font: var(--t-footnote); color: var(--label-2); font-variant-numeric: tabular-nums; }
+.book__shelves { display: flex; flex-wrap: wrap; gap: var(--s8); margin-top: var(--s16); }
+.book__shelves .k-chip { height: 30px; padding-inline: 12px; font: var(--t-footnote); cursor: default; }
+.book__shelves .k-chip[data-active] { background: var(--accent); color: var(--on-accent); font-weight: 600; }
+
+/* ---------- Community ---------- */
+
+/* ReviewCard: avatar + name, rating badge, text, spoiler tag and replies. */
+.review { display: grid; gap: var(--s12); padding: var(--s16); max-width: 560px; }
+.review__head, .request__row { display: flex; align-items: center; gap: var(--s12); }
+.review__head .k-badge { margin-left: auto; }
+.review__who { display: grid; min-width: 0; }
+.review__who strong { font: var(--t-headline); letter-spacing: var(--t-headline-ls); }
+.review__who small { font: var(--t-footnote); color: var(--label-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.review p { font: var(--t-subheadline); color: var(--label); }
+.review__foot { display: flex; flex-wrap: wrap; align-items: center; gap: var(--s12); font: var(--t-footnote); color: var(--label-2); }
+.review__foot .k-status { padding: 2px 8px; border-radius: var(--radius-pill); background: var(--fill-2); }
+.review__foot .k-text-btn { margin-left: auto; font: var(--t-footnote); font-weight: 600; }
+
+/* Activity feed: who did what, the rating when there is one. */
+.feed { list-style: none; display: grid; }
+.feed li { display: flex; align-items: center; gap: var(--s12); padding-block: var(--s8); font: var(--t-subheadline); }
+.feed li + li { border-top: var(--hairline) solid var(--separator); }
+.feed .k-avatar { flex: none; }
+.feed small { display: flex; align-items: center; gap: var(--s8); font: var(--t-footnote); color: var(--label-2); }
+
+/* Follow request (private account). */
+.request { display: grid; gap: var(--s12); padding: var(--s16); }
+.request__label { font: var(--t-footnote); color: var(--label-2); }
+.request__actions { display: flex; gap: var(--s8); }
+.request__actions .k-btn { flex: 1; cursor: default; }
+
+/* Push notifications, as banners over the lock screen (glass: they float). */
+.notices { display: grid; gap: var(--s8); }
+.notice {
+  display: flex;
+  align-items: center;
+  gap: var(--s12);
+  padding: var(--s12);
+  border-radius: var(--radius-group);
+  font: var(--t-footnote);
+  transform: translateY(8px);
+  opacity: 0;
+  transition: transform var(--motion-emphasized) var(--ease-standard) calc(300ms + var(--i) * 160ms),
+    opacity var(--motion-emphasized) var(--ease-standard) calc(300ms + var(--i) * 160ms);
+}
+.is-visible .notice, html:not(.js) .notice { transform: none; opacity: 1; }
+.notice img { border-radius: 6px; flex: none; }
+.notice span { display: grid; }
+.notice strong { font-weight: 600; }
+
+.safety { background: var(--elev-2); padding-block: 0; }
+.safety .k-list__row { min-height: 44px; }
 
 /* Accent picker: AccentSwatch with its name under it. */
 .swatches { display: flex; flex-wrap: wrap; gap: var(--s20); }
@@ -517,6 +566,29 @@ a.store:active { transform: scale(var(--pressed-scale)); }
     }
   }
 }
+/* The first item has no fade-in and the last no fade-out (see AppTour). */
+@supports (animation-timeline: view()) {
+  @media (min-width: 760px) and (prefers-reduced-motion: no-preference) {
+    .tour__frame:first-child { animation-name: tour-frame-first; }
+    .tour__frame:last-child { animation-name: tour-frame-last; }
+    .tour__caption:first-child { animation-name: tour-caption-first; }
+    .tour__caption:last-child { animation-name: tour-caption-last; }
+    .tour__dot:first-child { animation-name: tour-dot-first; }
+    .tour__dot:last-child { animation-name: tour-dot-last; }
+  }
+}
+@keyframes tour-frame-first { 0%, 88% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes tour-frame-last { 0% { opacity: 0; } 12%, 100% { opacity: 1; } }
+@keyframes tour-caption-first {
+  0%, 85% { opacity: 1; transform: translateY(0); }
+  100% { opacity: 0; transform: translateY(18px); }
+}
+@keyframes tour-caption-last {
+  0% { opacity: 0; transform: translateY(18px); }
+  15%, 100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes tour-dot-first { 0%, 85% { background: var(--accent); } 100% { background: var(--fill-2); } }
+@keyframes tour-dot-last { 0% { background: var(--fill-2); } 15%, 100% { background: var(--accent); } }
 @keyframes tour-frame {
   0%, 100% { opacity: 0; }
   12%, 88% { opacity: 1; }
@@ -660,6 +732,11 @@ a.store:active { transform: scale(var(--pressed-scale)); }
 .legal-layout .k-notice { margin-bottom: var(--s24); }
 .legal-layout .k-notice a { color: var(--accent-text); }
 
+/* Delete account: the two ways to ask, before the details. */
+.delete-cta { display: grid; gap: var(--s16); max-width: 70ch; margin-bottom: var(--s32); padding: var(--s24); }
+.delete-cta p { font: var(--t-body); letter-spacing: var(--t-body-ls); color: var(--label-2); }
+.delete-cta__actions { display: flex; flex-wrap: wrap; gap: var(--s12); }
+
 .prose { max-width: 70ch; }
 .prose h2 {
   margin: var(--s40) 0 var(--s12);
@@ -698,5 +775,6 @@ a.store:active { transform: scale(var(--pressed-scale)); }
   .js .hero [data-reveal],
   .js .legal-hero [data-reveal],
   .float-card { animation: none; }
-  .big-stars .fill, .bars i, .stack .k-poster, .avatars .k-avatar { transition: none; }
+  .big-stars .fill, .bars i, .stack .k-poster { transition: none; }
+  .notice { transition: none; transform: none; opacity: 1; }
 }

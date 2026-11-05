@@ -1,9 +1,10 @@
 import type { CSSProperties } from "react";
 import type { Dictionary } from "@/i18n";
-import { BellIcon, BookIcon, ListIcon, PaletteIcon, UsersIcon } from "../icons";
+import { BellIcon, BookIcon, GameIcon, ListIcon, UsersIcon } from "../icons";
 
 const v = (vars: Record<string, string | number>) => vars as CSSProperties;
-const icons = [<BookIcon key="book" />, <PaletteIcon key="palette" />, <ListIcon key="list" />, <UsersIcon key="users" />, <BellIcon key="bell" />];
+// One per roadmap item, in the order of `roadmap.items`: games, reading diary, custom lists, shared lists, reminders.
+const icons = [<GameIcon key="game" />, <BookIcon key="book" />, <ListIcon key="list" />, <UsersIcon key="users" />, <BellIcon key="bell" />];
 
 /** What's next, as a grouped list (GlassListSection) with a "coming soon" status on each row. */
 export function Roadmap({ t }: { t: Dictionary["roadmap"] }) {
