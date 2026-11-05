@@ -1,6 +1,18 @@
 Esta página explica como excluir sua conta do **Klaq**, app de Gabriel Henrique Silva, e o que acontece com os seus dados.
 
-## Como pedir
+## Pelo app
+
+É o caminho mais rápido, e a conta é excluída na hora:
+
+1. Abra o Klaq, conectado à conta que você quer excluir.
+2. Vá em **Configurações → Conta** e toque em **Excluir conta**.
+3. Confirme. O app exclui a conta no servidor, apaga os dados dela do aparelho e sai da conta.
+
+Se a exclusão não puder ser concluída (por exemplo, sem internet), nada é apagado e você pode tentar de novo.
+
+## Sem o app
+
+Se você não tem mais o app:
 
 1. Abra o formulário de exclusão (botão acima) ou mande um e-mail para klaq@gabrielhenrique.dev com o assunto "Excluir minha conta do Klaq".
 2. Informe o e-mail que você usa para entrar no Klaq. Se o pedido vier de outro endereço, podemos pedir uma confirmação de que a conta é sua.
@@ -23,7 +35,7 @@ Desinstalar o app **não** exclui a conta: seus dados continuam no servidor até
 
 - **Backups:** o banco de dados tem cópias de segurança cifradas, guardadas por até cerca de 6 meses. Elas só são usadas para recuperar o serviço em caso de falha e são descartadas automaticamente ao fim desse prazo.
 - **Obrigações legais:** se a lei exigir que algum dado seja guardado, ele é mantido só pelo prazo exigido e só para essa finalidade.
-- **No seu aparelho:** o app guarda uma cópia local da sua biblioteca. Ela só é apagada quando você desinstala o app.
+- **No seu aparelho:** excluir pelo app também apaga a cópia local da sua biblioteca nesse aparelho. Nos outros aparelhos, e quando o pedido é feito pelo formulário ou por e-mail, a cópia local só é apagada quando você desinstala o app.
 
 ## Dúvidas
 

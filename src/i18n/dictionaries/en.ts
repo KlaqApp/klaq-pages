@@ -266,7 +266,8 @@ export const en = {
     deleteAccount: {
       title: "Delete your account",
       description: "How to delete your Klaq account and what happens to your data.",
-      ctaText: "Fill in the form with the email you use to sign in to Klaq. You can also ask by email.",
+      ctaText:
+        "In the app: Settings → Account → Delete account. Without the app, fill in the form with the email you use to sign in to Klaq, or ask by email.",
       formCta: "Request account deletion",
       emailCta: "Ask by email",
       emailSubject: "Delete my Klaq account",

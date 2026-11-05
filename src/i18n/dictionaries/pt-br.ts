@@ -267,7 +267,8 @@ export const ptBr: Dictionary = {
     deleteAccount: {
       title: "Excluir sua conta",
       description: "Como excluir sua conta do Klaq e o que acontece com os seus dados.",
-      ctaText: "Preencha o formulário com o e-mail que você usa para entrar no Klaq. Se preferir, peça por e-mail.",
+      ctaText:
+        "No app: Configurações → Conta → Excluir conta. Sem o app, preencha o formulário com o e-mail que você usa para entrar no Klaq ou peça por e-mail.",
       formCta: "Pedir a exclusão da conta",
       emailCta: "Pedir por e-mail",
       emailSubject: "Excluir minha conta do Klaq",

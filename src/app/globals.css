@@ -747,7 +747,7 @@ a.store:active { transform: scale(var(--pressed-scale)); }
 .prose h2:first-child { margin-top: 0; }
 .prose h3 { margin: var(--s24) 0 var(--s8); font: var(--t-headline); letter-spacing: var(--t-headline-ls); }
 .prose p, .prose li { color: var(--label); }
-.prose p + p, .prose ul, .prose ol { margin-top: var(--s12); }
+.prose p + p, .prose ul + p, .prose ol + p, .prose ul, .prose ol { margin-top: var(--s12); }
 .prose ul, .prose ol { padding-left: 1.25em; display: grid; gap: var(--s8); }
 .prose li::marker { color: var(--label-2); }
 .prose a { color: var(--accent-text); text-decoration: underline; text-underline-offset: 2px; text-decoration-thickness: 1px; }
