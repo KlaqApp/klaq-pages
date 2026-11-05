@@ -1,22 +1,17 @@
-import type { Metadata } from "next";
-import { site } from "@/config/site";
+import { DeleteAccountCta } from "@/components/legal/DeleteAccountCta";
+import { LegalPage } from "@/components/legal/LegalPage";
+import { getDictionary } from "@/i18n";
+import { buildMetadata } from "@/i18n/metadata";
 
-// Link registered on Google Play for account deletion; it only forwards to the request form.
-export const metadata: Metadata = {
-  title: "Delete account — Klaq",
-  robots: { index: false },
-};
+// Registered on Google Play as the account deletion link: it has to say how to ask for deletion
+// and what is deleted or kept, not just forward to the form.
+const { title, description } = getDictionary("en").legal.deleteAccount;
+export const metadata = buildMetadata("en", "/delete-account/", { title: `${title} — Klaq`, description });
 
 export default function Page() {
   return (
-    <main className="not-found">
-      <meta httpEquiv="refresh" content={`0; url=${site.deleteAccountFormUrl}`} />
-      <div>
-        <h1>Redirecting…</h1>
-        <p>
-          If nothing happens, <a href={site.deleteAccountFormUrl}>open the account deletion form</a>.
-        </p>
-      </div>
-    </main>
+    <LegalPage locale="en" doc="delete-account">
+      <DeleteAccountCta locale="en" />
+    </LegalPage>
   );
 }

@@ -1,107 +1,110 @@
-Esta política de privacidade se aplica ao aplicativo Klaq para dispositivos móveis, junto com quaisquer serviços relacionados operados por Gabriel Henrique Silva (coletivamente, o "Aplicativo"). Gabriel Henrique Silva é doravante denominado "Prestador de Serviço".
+Esta política explica como o **Klaq** (o aplicativo para iOS e Android e o servidor que o atende, juntos o "Aplicativo") trata os seus dados pessoais. O Aplicativo é mantido por **Gabriel Henrique Silva** ("nós"), pessoa física estabelecida no Brasil, que é o controlador dos dados nos termos da Lei Geral de Proteção de Dados (Lei nº 13.709/2018, "LGPD").
 
-## Coleta e uso de informações
+## Quem é responsável
 
-O Aplicativo coleta informações quando você o baixa e usa. Essas informações podem incluir:
+- **Controlador e encarregado pelo tratamento de dados:** Gabriel Henrique Silva.
+- **Contato para privacidade e para exercer seus direitos:** klaq@gabrielhenrique.dev.
 
-*   O endereço de Protocolo de Internet (IP) do seu dispositivo
-*   As páginas do Aplicativo que você visita, a data e o horário da visita e o tempo gasto nessas páginas
-*   O tempo gasto no Aplicativo
-*   O sistema operacional do seu dispositivo móvel
+## Dados que coletamos
 
-## Cookies e tecnologias de rastreamento
+**Dados que você informa**
 
-O Aplicativo ou seus SDKs de terceiros podem usar cookies, SDKs, pixels e tecnologias semelhantes para dar suporte a funcionalidades, análises ou à prestação do serviço. Quando exigido pela legislação aplicável, o Prestador de Serviço obterá seu consentimento antes de usar tecnologias de rastreamento não essenciais.
+- **Conta:** e-mail e senha. A senha é guardada pelo provedor de login (Supabase) e nunca chega até nós em texto.
+- **Perfil:** nome, @username, bio (opcional), cor do avatar e se a conta é privada ou pública.
+- **O que você registra:** filmes, séries e episódios assistidos, com datas, notas e reassistidas; a lista "Quero assistir"; a estante de livros, com status (quero ler, lendo, lido), páginas, datas e notas.
+- **Conteúdo da comunidade:** reviews, respostas, denúncias que você faz e o aceite das regras da comunidade.
+- **Relações:** quem você segue, quem segue você, pedidos para seguir e bloqueios.
+- **Buscas:** o texto que você digita para buscar filmes, séries, livros e pessoas.
+
+**Dados gerados pelo uso**
+
+- **Token de notificação** de cada aparelho, se você permitir os avisos.
+- **Registros de moderação:** horário das suas publicações (para o limite de envios), denúncias recebidas pelo seu conteúdo e, se for o caso, banimento.
+- **Registros técnicos do servidor:** data e hora, endereço acessado e dados de conexão das requisições, usados para operar o serviço, investigar erros e proteger o Aplicativo.
+
+**O que não coletamos:** não pedimos idade, localização, contatos nem fotos. O Aplicativo não usa ferramentas de analytics, de publicidade ou de rastreamento entre apps, e não vendemos dados.
+
+## O que fica visível para outras pessoas
+
+O Aplicativo tem recursos sociais. Para ver qualquer conteúdo é preciso estar logado: nada do que está abaixo aparece na web aberta.
+
+- **Seu perfil** (nome, @username, bio, cor do avatar, contadores de seguidores) aparece na busca de pessoas depois que você termina o cadastro do perfil.
+- **Conta pública:** qualquer pessoa logada pode ver seu histórico, suas listas, sua estante e sua atividade (o que você assistiu e avaliou).
+- **Conta privada:** só quem você aceitar como seguidor vê esse conteúdo.
+- **Reviews e respostas são públicas** para quem está logado, inclusive em contas privadas, e mostram a nota que você deu à obra.
+- **Bloqueios** escondem o conteúdo nos dois sentidos.
+
+## Para que usamos os dados e com que base legal
+
+| Finalidade | Base legal (LGPD, art. 7º) |
+|---|---|
+| Criar e manter sua conta, sincronizar seus registros entre aparelhos e mostrar o catálogo | Execução de contrato (inciso V) |
+| Recursos sociais: perfil, seguir, feed de atividade, reviews e respostas | Execução de contrato (inciso V) |
+| Enviar avisos push (novos seguidores, pedidos aceitos, respostas às suas reviews e novidades do Klaq) | Consentimento (inciso I), dado pela permissão de notificações do aparelho e revogável a qualquer momento |
+| Moderar conteúdo, aplicar as regras da comunidade, prevenir abuso e manter a segurança do serviço | Legítimo interesse (inciso IX) |
+| Fazer backups e recuperar o serviço em caso de falha | Legítimo interesse (inciso IX) |
+| Cumprir obrigações legais e atender autoridades | Cumprimento de obrigação legal (inciso II) e exercício regular de direitos (inciso VI) |
+
+## Com quem compartilhamos
+
+Usamos alguns fornecedores para operar o Aplicativo. Eles tratam os dados em nosso nome e só para essas finalidades.
+
+- **Supabase:** login (e-mail, senha e sessão). Versões antigas do app também guardavam histórico, listas e tokens de notificação no Supabase.
+- **Google Firebase Cloud Messaging:** entrega dos avisos push (token do aparelho e o texto do aviso).
+- **Cloudflare:** rede que liga o Aplicativo ao nosso servidor (as requisições passam por ela).
+- **Armazenamento em nuvem:** guarda as cópias de segurança do banco, que já saem do servidor cifradas.
+- **Catálogo:** TMDB (filmes e séries), Google Books, Open Library e BrasilAPI (livros). As buscas são feitas pelo nosso servidor, sem enviar sua identidade. As imagens (pôsteres e capas) são carregadas pelo seu aparelho direto desses serviços, que por isso recebem o endereço IP do aparelho.
+
+Também podemos compartilhar dados quando a lei exigir, por ordem judicial ou de autoridade competente, ou para proteger direitos, a segurança dos usuários ou o próprio serviço.
+
+## Transferência internacional
+
+Alguns fornecedores (como Supabase, Google e Cloudflare) podem guardar ou processar dados fora do Brasil, por exemplo nos Estados Unidos. Essas transferências seguem o art. 33 da LGPD, com base nas garantias contratuais oferecidas por esses fornecedores e, quando aplicável, nas normas da Autoridade Nacional de Proteção de Dados (ANPD).
+
+## Por quanto tempo guardamos
+
+- **Conta e conteúdo:** enquanto a conta existir. Ao excluir a conta, os dados são apagados (veja [Excluir conta](/pt-br/delete-account/)).
+- **Itens que você apaga** (um registro do histórico ou um livro da estante): são removidos do servidor em até 7 dias. Esse intervalo existe para que a exclusão chegue a todos os seus aparelhos.
+- **Backups cifrados:** até cerca de 6 meses, descartados automaticamente depois disso.
+- **Registros técnicos e de moderação:** pelo tempo necessário para a segurança do serviço, ou pelo prazo que a lei exigir.
+- **No seu aparelho:** o app guarda uma cópia local da sua biblioteca para funcionar offline. Ela só é apagada quando você desinstala o app.
 
 ## Seus direitos
 
-Você pode solicitar acesso, correção ou exclusão dos seus dados pessoais mantidos pelo Prestador de Serviço. Para exercer esses direitos, ou para revogar o consentimento quando o tratamento se basear nele, entre em contato com o Prestador de Serviço pelo e-mail klaq@gabrielhenrique.dev.
+Pela LGPD (art. 18), você pode pedir a qualquer momento:
 
-## Seus direitos de privacidade na Califórnia (CCPA/CPRA)
+- confirmação de que tratamos seus dados e acesso a eles;
+- correção de dados incompletos, inexatos ou desatualizados;
+- anonimização, bloqueio ou eliminação de dados desnecessários ou tratados em desconformidade com a lei;
+- portabilidade dos dados;
+- eliminação dos dados tratados com base no seu consentimento;
+- informação sobre com quem compartilhamos seus dados;
+- revogação do consentimento.
 
-Se você reside na Califórnia, tem o direito de saber quais informações pessoais são coletadas, o direito de excluir informações pessoais, o direito de recusar a venda ou o compartilhamento de informações pessoais e o direito de não sofrer discriminação por exercer esses direitos. Para exercer seus direitos previstos na CCPA/CPRA, entre em contato com o Prestador de Serviço pelo e-mail klaq@gabrielhenrique.dev.
+Boa parte disso você faz no próprio app: editar o perfil, tornar a conta privada, apagar registros e reviews, bloquear pessoas e desligar os avisos. Para o resto, escreva para klaq@gabrielhenrique.dev. Podemos pedir uma confirmação de que a conta é sua. Você também pode reclamar à ANPD (www.gov.br/anpd).
 
-O Prestador de Serviço pode usar as informações que você fornecer para enviar informações importantes, avisos obrigatórios e, quando permitido por lei, comunicações de marketing.
+Se você mora fora do Brasil, atendemos os direitos previstos na lei do seu país (como o GDPR, na União Europeia, ou a CCPA, na Califórnia) pelo mesmo contato.
 
-Para uma melhor experiência ao usar o Aplicativo, o Prestador de Serviço pode solicitar que você forneça determinadas informações de identificação pessoal, incluindo, entre outras, e-mail, nome e idade. As informações solicitadas pelo Prestador de Serviço serão mantidas e usadas conforme descrito nesta política de privacidade.
+## Notificações
 
-## Acesso de terceiros
+Os avisos push só são enviados se você permitir. Você pode desligá-los em Configurações → Notificações, no app, ou nos ajustes do aparelho.
 
-Apenas dados agregados e anonimizados são transmitidos periodicamente a serviços externos para ajudar o Prestador de Serviço a aprimorar o Aplicativo e seu serviço. O Prestador de Serviço pode compartilhar suas informações com terceiros das formas descritas nesta declaração de privacidade.
+## Crianças e adolescentes
 
-## Transferências internacionais de dados
-
-O Prestador de Serviço ou seus prestadores de serviço terceirizados podem transferir dados pessoais para países fora do seu país de residência, inclusive fora do Espaço Econômico Europeu (EEE). Quando a legislação aplicável exigir salvaguardas para transferências internacionais, o Prestador de Serviço utilizará os mecanismos adequados:
-
-*   Cláusulas Contratuais Padrão (SCCs) aprovadas pela Comissão Europeia
-*   Decisões de adequação ou outros mecanismos de transferência legalmente reconhecidos
-*   Seu consentimento, quando exigido e legalmente permitido
-
-As leis de proteção de dados de outros países podem ser diferentes das da sua jurisdição. Quando exigido por lei, o Prestador de Serviço aplicará as salvaguardas adequadas e obterá o consentimento necessário para a transferência.
-
-Observe que o Aplicativo utiliza serviços de terceiros que têm sua própria Política de Privacidade sobre o tratamento de dados. Abaixo estão os links para as Políticas de Privacidade dos prestadores de serviço terceirizados usados pelo Aplicativo:
-
-*   [Firebase Crashlytics](https://firebase.google.com/support/privacy/)
-
-O Prestador de Serviço pode divulgar Informações Fornecidas pelo Usuário e Informações Coletadas Automaticamente:
-
-*   quando exigido por lei, como para cumprir uma intimação ou processo legal semelhante;
-*   quando acreditar, de boa-fé, que a divulgação é necessária para proteger seus direitos, proteger a sua segurança ou a de terceiros, investigar fraudes ou responder a uma solicitação governamental;
-*   com prestadores de serviço de confiança que trabalham em seu nome, não fazem uso independente das informações divulgadas pelo Prestador de Serviço e concordaram em seguir as regras estabelecidas nesta declaração de privacidade.
-
-## Direito de recusa (opt-out)
-
-Você pode interromper qualquer coleta futura de informações do seu dispositivo móvel desinstalando o Aplicativo. A desinstalação impede que o Aplicativo continue coletando dados do seu dispositivo, mas não exclui automaticamente as informações que já foram transmitidas ao Prestador de Serviço ou a terceiros.
-
-Para solicitar a exclusão dos seus dados pessoais, revogar o consentimento ou exercer qualquer um dos seus direitos, entre em contato com o Prestador de Serviço pelo e-mail klaq@gabrielhenrique.dev.
-
-## Política de retenção de dados
-
-O Prestador de Serviço retém dados pessoais conforme sua necessidade para as finalidades informadas:
-
-*   Dados Fornecidos pelo Usuário: mantidos enquanto você usar o Aplicativo e por mais 12 meses depois disso, salvo se a lei exigir retenção por mais tempo
-*   Dados Coletados Automaticamente: mantidos por até 24 meses a partir da coleta, salvo se for necessária retenção maior para cumprimento legal
-*   Dados Agregados e Anonimizados: mantidos indefinidamente, pois não identificam mais você
-*   Dados necessários para cumprimento legal: mantidos pelo tempo exigido pela legislação aplicável
-
-Você pode solicitar a exclusão dos seus dados pessoais, sujeita a qualquer obrigação legal de retê-los. Se quiser que o Prestador de Serviço exclua os Dados Fornecidos pelo Usuário enviados por meio do Aplicativo, entre em contato pelo e-mail klaq@gabrielhenrique.dev. Observe que alguns Dados Fornecidos pelo Usuário podem ser necessários para que o Aplicativo funcione corretamente.
-
-## Exclusão de dados
-
-Você pode solicitar a exclusão dos seus dados pessoais ou da sua conta entrando em contato com o Prestador de Serviço pelo e-mail klaq@gabrielhenrique.dev. O Prestador de Serviço atenderá à solicitação dentro dos prazos exigidos pela legislação aplicável.
-
-Após a verificação da sua identidade, o Prestador de Serviço excluirá seus dados pessoais de seus sistemas, exceto quando a retenção for exigida para cumprimento legal ou para fins comerciais legítimos.
-
-## Crianças
-
-O Aplicativo não se destina a menores de 16 anos, ou a idade superior exigida pela legislação aplicável. O Prestador de Serviço não solicita intencionalmente dados de crianças nem direciona o Aplicativo a elas.
-
-Quando a legislação aplicável exigir o consentimento dos pais ou responsáveis, o Aplicativo não deve ser usado sem esse consentimento. O Prestador de Serviço não coleta intencionalmente informações de identificação pessoal de menores de 16 anos em violação à legislação aplicável. Caso o Prestador de Serviço descubra que uma criança forneceu informações pessoais, elas serão imediatamente excluídas de seus servidores. Se você é pai, mãe ou responsável e sabe que seu filho forneceu informações pessoais ao Prestador de Serviço, entre em contato (klaq@gabrielhenrique.dev) para que as medidas necessárias possam ser tomadas.
+O Aplicativo não é destinado a menores de 16 anos. Se soubermos que uma conta pertence a alguém com menos idade sem o consentimento dos responsáveis, ela será excluída. Responsáveis podem pedir a exclusão pelo e-mail klaq@gabrielhenrique.dev.
 
 ## Segurança
 
-O Prestador de Serviço se preocupa em proteger a confidencialidade das suas informações e adota salvaguardas físicas, eletrônicas e procedimentais para proteger as informações que trata e mantém.
+As conexões com o Aplicativo são cifradas (HTTPS). O acesso aos seus dados exige um token de login válido, verificado a cada requisição. Os backups são cifrados antes de sair do servidor. Nenhum sistema é totalmente imune a falhas, mas adotamos medidas técnicas e administrativas razoáveis para proteger seus dados.
 
-## Notificação de violação de dados
+## Incidentes de segurança
 
-Caso ocorra uma violação de dados que afete seus dados pessoais, o Prestador de Serviço notificará você de acordo com os requisitos legais aplicáveis, incluindo, quando exigido, informações sobre a natureza da violação e as medidas adotadas para tratá-la.
+Se houver um incidente que possa causar risco ou dano relevante a você, comunicaremos você e a ANPD, como prevê a LGPD.
 
-## Alterações
+## Alterações nesta política
 
-O Prestador de Serviço pode atualizar esta Política de Privacidade periodicamente. Alterações relevantes serão comunicadas por meio da publicação da Política de Privacidade atualizada com sua data de vigência. Quando exigido por lei, o Prestador de Serviço solicitará seu consentimento para alterações relevantes antes que entrem em vigor.
+Podemos atualizar esta política quando o Aplicativo mudar. A data de vigência fica no topo da página. Mudanças relevantes também serão avisadas no app.
 
-Versões anteriores desta Política de Privacidade serão mantidas e disponibilizadas mediante solicitação pelo e-mail klaq@gabrielhenrique.dev.
+## Contato
 
-Esta política de privacidade está em vigor desde 19/09/2026.
-
-## Seu consentimento
-
-Quando o tratamento se basear no consentimento, você o concede ao optar ativamente pelo recurso ou ação correspondente. Você pode revogar o consentimento a qualquer momento, sem afetar o tratamento realizado antes da revogação. O tratamento baseado em outras bases legais é realizado conforme descrito acima.
-
-## Fale conosco
-
-Se tiver dúvidas sobre privacidade ao usar o Aplicativo, ou sobre as práticas descritas aqui, entre em contato com o Prestador de Serviço pelo e-mail klaq@gabrielhenrique.dev.
-
-* * *
-
-Esta página de política de privacidade foi gerada pelo [App Privacy Policy Generator](https://app-privacy-policy-generator.nisrulz.com/)
+Dúvidas sobre privacidade: klaq@gabrielhenrique.dev.
