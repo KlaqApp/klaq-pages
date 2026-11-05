@@ -7,6 +7,7 @@ import { SiteHeader } from "../SiteHeader";
 import { StoreBadges } from "../StoreBadges";
 import { HeartIcon, MailIcon, ServerIcon, SparkIcon, UsersIcon } from "../icons";
 import { AppTour } from "./AppTour";
+import { Community } from "./Community";
 import { Features } from "./Features";
 import { PhoneMockup } from "./PhoneMockup";
 import { Roadmap } from "./Roadmap";
@@ -49,6 +50,8 @@ export function HomePage({ locale }: { locale: Locale }) {
 
         <Features t={t.features} season={t.mockup.season} score={t.mockup.score} />
 
+        <Community t={t.community} />
+
         <AppTour t={t.tour} />
 
         <Roadmap t={t.roadmap} />
@@ -63,7 +66,12 @@ export function HomePage({ locale }: { locale: Locale }) {
               <StoreBadges t={t.stores} />
               <div className="beta">
                 <p>{t.beta.subtitle}</p>
-                <a className="k-btn k-btn--md" href={site.betaFormUrl} target="_blank" rel="noopener noreferrer">
+                <a
+                  className="k-btn k-btn--md"
+                  {...(site.betaFormUrl
+                    ? { href: site.betaFormUrl, target: "_blank", rel: "noopener noreferrer" }
+                    : { href: `mailto:${site.email}?subject=${encodeURIComponent(t.beta.emailSubject)}` })}
+                >
                   {t.beta.cta}
                 </a>
               </div>

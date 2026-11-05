@@ -1,5 +1,5 @@
 import { readFileSync } from "node:fs";
-import type { CSSProperties } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import path from "node:path";
 import { Marked, type Tokens } from "marked";
 import { getDictionary } from "@/i18n";
@@ -9,7 +9,7 @@ import { SiteHeader } from "../SiteHeader";
 import { TocSpy } from "../client/TocSpy";
 import { ArrowLeftIcon, CalendarIcon, ChevronDownIcon, InfoIcon } from "../icons";
 
-export type LegalDoc = "privacy" | "terms-and-conditions";
+export type LegalDoc = "privacy" | "terms-and-conditions" | "delete-account";
 
 function slugify(text: string) {
   return text
@@ -57,9 +57,9 @@ function TocList({ toc }: { toc: { id: string; text: string }[] }) {
   );
 }
 
-export function LegalPage({ locale, doc }: { locale: Locale; doc: LegalDoc }) {
+export function LegalPage({ locale, doc, children }: { locale: Locale; doc: LegalDoc; children?: ReactNode }) {
   const t = getDictionary(locale);
-  const copy = doc === "privacy" ? t.legal.privacy : t.legal.terms;
+  const copy = { privacy: t.legal.privacy, "terms-and-conditions": t.legal.terms, "delete-account": t.legal.deleteAccount }[doc];
   const route: Route = `/${doc}/`;
   const { html, toc } = renderDoc(locale, doc);
 
@@ -108,6 +108,7 @@ export function LegalPage({ locale, doc }: { locale: Locale; doc: LegalDoc }) {
                 </span>
               </p>
             )}
+            {children}
             <article className="prose" dangerouslySetInnerHTML={{ __html: html }} />
           </div>
         </div>

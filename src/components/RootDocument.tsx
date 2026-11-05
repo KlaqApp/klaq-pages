@@ -6,7 +6,8 @@ import "@/dsm/bundle.css";
 import "@/app/globals.css";
 
 /**
- * Runs before paint: enables reveal animations, restores the chosen accent and, on the English
+ * Runs before paint: enables reveal animations, restores the chosen accent ("mint" is the old
+ * name of the default cyan, as in the app) and, on the English
  * home page only, sends Portuguese browsers to /pt-br/ unless the visitor picked a language or
  * came from another page of the site (so the EN switch works even when storage is blocked).
  */
@@ -15,7 +16,7 @@ function bootScript(locale: Locale) {
     locale === "en"
       ? `if(location.pathname==="/"&&document.referrer.indexOf(location.origin)!==0&&!localStorage.getItem("${LOCALE_STORAGE_KEY}")&&/^pt\\b/i.test(navigator.language||""))location.replace("${localePath("pt-br")}"+location.hash);`
       : "";
-  return `(function(){var d=document.documentElement;d.classList.add("js");try{var a=localStorage.getItem("klaq-accent");if(a&&a!=="mint")d.dataset.highlight=a;${redirect}}catch(e){}})();`;
+  return `(function(){var d=document.documentElement;d.classList.add("js");try{var a=localStorage.getItem("klaq-accent");if(a&&a!=="cyan"&&a!=="mint")d.dataset.highlight=a;${redirect}}catch(e){}})();`;
 }
 
 export function RootDocument({ locale, children }: { locale: Locale; children: ReactNode }) {

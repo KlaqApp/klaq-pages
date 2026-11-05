@@ -4,6 +4,13 @@ import { htmlLang, localePath, otherLocale, type Locale, type Route } from "@/i1
 import { InstagramIcon, TikTokIcon, XIcon } from "./icons";
 import { LanguageSwitch } from "./client/LanguageSwitch";
 
+// Profiles that don't exist yet stay out of the footer instead of linking nowhere.
+const socials = [
+  { href: site.social.instagram, label: "Instagram", icon: <InstagramIcon /> },
+  { href: site.social.x, label: "X", icon: <XIcon /> },
+  { href: site.social.tiktok, label: "TikTok", icon: <TikTokIcon /> },
+].filter((s) => s.href);
+
 export function SiteFooter({ locale, route }: { locale: Locale; route: Route }) {
   const t = getDictionary(locale);
   const home = localePath(locale);
@@ -24,6 +31,7 @@ export function SiteFooter({ locale, route }: { locale: Locale; route: Route }) 
             <h4 className="k-eyebrow">{t.footer.project}</h4>
             <ul>
               <li><a href={`${home}#features`}>{t.nav.features}</a></li>
+              <li><a href={`${home}#community`}>{t.nav.community}</a></li>
               <li><a href={`${home}#roadmap`}>{t.nav.roadmap}</a></li>
               <li><a href={`${home}#download`}>{t.nav.download}</a></li>
               <li><a href={`${home}#contribute`}>{t.nav.contribute}</a></li>
@@ -34,7 +42,7 @@ export function SiteFooter({ locale, route }: { locale: Locale; route: Route }) 
             <ul>
               <li><a href={localePath(locale, "/privacy/")}>{t.footer.privacy}</a></li>
               <li><a href={localePath(locale, "/terms-and-conditions/")}>{t.footer.terms}</a></li>
-              <li><a href="/delete-account/">{t.footer.deleteAccount}</a></li>
+              <li><a href={localePath(locale, "/delete-account/")}>{t.footer.deleteAccount}</a></li>
             </ul>
           </div>
           <div className="footer__col">
@@ -42,17 +50,15 @@ export function SiteFooter({ locale, route }: { locale: Locale; route: Route }) 
             <ul>
               <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
             </ul>
-            <div className="footer__social">
-              <a className="k-btn k-btn--icon k-btn--sm" href={site.social.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                <InstagramIcon />
-              </a>
-              <a className="k-btn k-btn--icon k-btn--sm" href={site.social.x} target="_blank" rel="noopener noreferrer" aria-label="X">
-                <XIcon />
-              </a>
-              <a className="k-btn k-btn--icon k-btn--sm" href={site.social.tiktok} target="_blank" rel="noopener noreferrer" aria-label="TikTok">
-                <TikTokIcon />
-              </a>
-            </div>
+            {socials.length > 0 && (
+              <div className="footer__social">
+                {socials.map(({ href, label, icon }) => (
+                  <a key={label} className="k-btn k-btn--icon k-btn--sm" href={href} target="_blank" rel="noopener noreferrer" aria-label={label}>
+                    {icon}
+                  </a>
+                ))}
+              </div>
+            )}
           </div>
         </div>
         <div className="footer__bottom">

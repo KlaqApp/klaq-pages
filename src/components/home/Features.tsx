@@ -2,6 +2,7 @@ import type { CSSProperties, ReactNode } from "react";
 import type { Dictionary } from "@/i18n";
 import { AccentPicker } from "../client/AccentPicker";
 import {
+  BookIcon,
   BookmarkIcon,
   ChartIcon,
   CheckIcon,
@@ -11,13 +12,12 @@ import {
   ShareIcon,
   StarIcon,
   SyncIcon,
-  UsersIcon,
 } from "../icons";
 
 const v = (vars: Record<string, string | number>) => vars as CSSProperties;
 
 /** A feature tile: LunaCard at hero radius, icon in a fill-2 circle, title-3 + subheadline. */
-function Tile({
+export function Tile({
   icon,
   title,
   text,
@@ -103,6 +103,31 @@ function Stars({ share, score }: { share: string; score: string }) {
   );
 }
 
+/** A book being read: cover + StatusPill + page progress, and the three shelves as chips. */
+function Book({ status, pages, shelves }: { status: string; pages: string; shelves: string[] }) {
+  return (
+    <div aria-hidden>
+      <div className="book">
+        <div className="k-poster k-poster--thumb art-2" />
+        <div className="book__info">
+          <span className="k-status">{status}</span>
+          <div className="k-progress" style={v({ "--value": 184 / 320 })}>
+            <span className="k-progress__fill" />
+          </div>
+          <span className="book__pages">{pages}</span>
+        </div>
+      </div>
+      <div className="book__shelves">
+        {shelves.map((shelf, i) => (
+          <span key={shelf} className="k-chip" data-active={i === 1 ? "" : undefined}>
+            {shelf}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 const barHeights = [0.38, 0.62, 0.45, 0.8, 0.56, 1, 0.72];
 const CURRENT_DAY = 5;
 
@@ -162,22 +187,8 @@ export function Features({ t, season, score }: { t: Dictionary["features"]; seas
               ))}
             </ul>
           </Tile>
-          <Tile order={2} icon={<UsersIcon />} title={f.social.title} text={f.social.text}>
-            <div className="avatars" aria-hidden>
-              {["A", "M", "J", "L"].map((initial, i) => (
-                <span
-                  key={initial}
-                  className="k-avatar"
-                  style={v({
-                    "--i": i,
-                    "--k-avatar-from": `var(--avatar-${i + 1}-from)`,
-                    "--k-avatar-to": `var(--avatar-${i + 1}-to)`,
-                  })}
-                >
-                  {initial}
-                </span>
-              ))}
-            </div>
+          <Tile order={2} icon={<BookIcon />} title={f.books.title} text={f.books.text}>
+            <Book status={t.bookStatus} pages={t.bookPages} shelves={t.bookShelves} />
           </Tile>
 
           <Tile order={0} icon={<SyncIcon />} title={f.offline.title} text={f.offline.text}>

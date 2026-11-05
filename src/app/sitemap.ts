@@ -4,7 +4,7 @@ import { localePath, locales, type Route } from "@/i18n/config";
 
 export const dynamic = "force-static";
 
-const routes: Route[] = ["/", "/privacy/", "/terms-and-conditions/"];
+const routes: Route[] = ["/", "/privacy/", "/terms-and-conditions/", "/delete-account/"];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return routes.flatMap((route) =>
