@@ -18,7 +18,7 @@ export function SiteHeader({ locale, route }: { locale: Locale; route: Route }) 
         <div className="container">
           <div className="site-header__bar">
             <a className="brand" href={home} aria-label={`Klaq: ${t.nav.home}`}>
-              <img src="/icon.png" alt="" width={32} height={32} />
+              <img src="/app-icon.png" alt="" width={32} height={32} />
               Klaq
             </a>
             <nav className="site-nav" aria-label="Primary">

@@ -22,7 +22,7 @@ export function SiteFooter({ locale, route }: { locale: Locale; route: Route }) 
         <div className="footer__grid">
           <div className="footer__brand">
             <a className="brand" href={home}>
-              <img src="/icon.png" alt="" width={32} height={32} />
+              <img src="/app-icon.png" alt="" width={32} height={32} />
               Klaq
             </a>
             <p>{t.footer.tagline}</p>
