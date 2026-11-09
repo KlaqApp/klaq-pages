@@ -2,15 +2,15 @@
 
 import { useEffect, useState, type CSSProperties } from "react";
 
-/** The highlight styles the app offers (tokens highlight-*). Mint is the default: no attribute. */
-export const accents = ["mint", "coral", "spring", "amber"] as const;
+/** The highlight styles the app offers (tokens highlight-*). Cyan is the default: no attribute. */
+export const accents = ["cyan", "coral", "spring", "amber"] as const;
 
 type AccentId = (typeof accents)[number];
 const STORAGE_KEY = "klaq-accent";
 
 /** AccentSwatch row: picking one sets <html data-highlight> and recolors the whole page. */
 export function AccentPicker({ labels }: { labels: Record<AccentId, string> }) {
-  const [current, setCurrent] = useState<AccentId>("mint");
+  const [current, setCurrent] = useState<AccentId>("cyan");
 
   useEffect(() => {
     const stored = document.documentElement.dataset.highlight as AccentId | undefined;
@@ -20,7 +20,7 @@ export function AccentPicker({ labels }: { labels: Record<AccentId, string> }) {
   const select = (id: AccentId) => {
     setCurrent(id);
     const root = document.documentElement;
-    if (id === "mint") delete root.dataset.highlight;
+    if (id === "cyan") delete root.dataset.highlight;
     else root.dataset.highlight = id;
     try {
       localStorage.setItem(STORAGE_KEY, id);

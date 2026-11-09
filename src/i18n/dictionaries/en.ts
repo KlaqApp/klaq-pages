@@ -83,7 +83,7 @@ export const en = {
     days: ["M", "T", "W", "T", "F", "S", "S"],
     historyItems: ["Movie", "Episode", "Rewatch"],
     accents: {
-      mint: "Mint",
+      cyan: "Cyan",
       coral: "Coral",
       spring: "Spring",
       amber: "Amber",

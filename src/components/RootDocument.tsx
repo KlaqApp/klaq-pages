@@ -15,7 +15,7 @@ function bootScript(locale: Locale) {
     locale === "en"
       ? `if(location.pathname==="/"&&document.referrer.indexOf(location.origin)!==0&&!localStorage.getItem("${LOCALE_STORAGE_KEY}")&&/^pt\\b/i.test(navigator.language||""))location.replace("${localePath("pt-br")}"+location.hash);`
       : "";
-  return `(function(){var d=document.documentElement;d.classList.add("js");try{var a=localStorage.getItem("klaq-accent");if(a&&a!=="mint")d.dataset.highlight=a;${redirect}}catch(e){}})();`;
+  return `(function(){var d=document.documentElement;d.classList.add("js");try{var a=localStorage.getItem("klaq-accent");if(a&&a!=="cyan"&&a!=="mint")d.dataset.highlight=a;${redirect}}catch(e){}})();`;
 }
 
 export function RootDocument({ locale, children }: { locale: Locale; children: ReactNode }) {

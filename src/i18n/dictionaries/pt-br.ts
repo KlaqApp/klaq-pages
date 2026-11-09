@@ -85,7 +85,7 @@ export const ptBr: Dictionary = {
     days: ["S", "T", "Q", "Q", "S", "S", "D"],
     historyItems: ["Filme", "Episódio", "Reassistido"],
     accents: {
-      mint: "Menta",
+      cyan: "Ciano",
       coral: "Coral",
       spring: "Primavera",
       amber: "Âmbar",
