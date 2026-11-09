@@ -102,7 +102,7 @@ export function Community({ t }: { t: Dictionary["community"] }) {
             <div className="notices" aria-hidden>
               {t.notices.map((notice, i) => (
                 <p key={notice} className="notice k-glass" style={v({ "--i": i })}>
-                  <img src="/icon.png" alt="" width={24} height={24} />
+                  <img src="/app-icon.png" alt="" width={24} height={24} />
                   <span>
                     <strong>Klaq</strong>
                     {notice}

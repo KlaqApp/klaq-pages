@@ -59,7 +59,7 @@ export function HomePage({ locale }: { locale: Locale }) {
         <section id="download" className="section">
           <div className="container">
             <div className="download k-surface k-surface--card" data-reveal>
-              <img className="app-icon" src="/icon.png" alt="Klaq" width={88} height={88} />
+              <img className="app-icon" src="/app-icon.png" alt="Klaq" width={88} height={88} />
               <span className="k-eyebrow k-eyebrow--accent">{t.download.eyebrow}</span>
               <h2 className="section-title">{t.download.title}</h2>
               <p className="section-sub">{t.download.subtitle}</p>
