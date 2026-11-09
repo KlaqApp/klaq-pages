@@ -23,6 +23,7 @@ export function SiteHeader({ locale, route }: { locale: Locale; route: Route }) 
             </a>
             <nav className="site-nav" aria-label="Primary">
               <a href={`${home}#features`}>{t.nav.features}</a>
+              <a href={`${home}#community`}>{t.nav.community}</a>
               <a href={`${home}#roadmap`}>{t.nav.roadmap}</a>
               <a href={`${home}#download`}>{t.nav.download}</a>
               <a href={`${home}#contribute`}>{t.nav.contribute}</a>

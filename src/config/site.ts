@@ -10,13 +10,13 @@ export const site = {
   // Donation page (GitHub Sponsors, Ko-fi, Apoia.se...). Empty: the support button opens an email instead.
   supportUrl: "",
   deleteAccountFormUrl: "https://forms.gle/2cM1CpHMJyY2qbqdA",
-  // TODO: replace with the real beta sign-up form (e.g. a Google Form) once it exists.
-  betaFormUrl: "#",
+  // Beta sign-up (public TestFlight link, Google Form...). Empty: the beta button opens an email instead.
+  betaFormUrl: "",
   tmdbUrl: "https://www.themoviedb.org",
-  // TODO: replace with the real profile URLs once the accounts exist.
+  // Social profiles. Empty: the icon is left out of the footer.
   social: {
-    instagram: "#",
-    x: "#",
-    tiktok: "#",
+    instagram: "",
+    x: "",
+    tiktok: "",
   },
 } as const;
